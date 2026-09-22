@@ -1,0 +1,137 @@
+/* Extend the existing cinematic brand; product colours remain true to the supplied photos. */
+.catalogue-product .product-visual {
+  background: #f4f4f4;
+}
+.catalogue-product .product-visual img {
+  object-fit: contain;
+  width: 100%;
+  margin: 0;
+  object-position: center;
+  filter: none;
+  padding: 16px;
+}
+.catalogue-product h3 {
+  font-size: 16px;
+  line-height: 1.45;
+}
+.catalogue-product .product-meta {
+  display: block;
+}
+.catalogue-product .price {
+  display: block;
+  padding-top: 12px;
+  color: var(--accent-soft);
+}
+.image-unavailable {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 240px;
+  padding: 24px;
+  color: #666;
+  font-size: 16px;
+}
+.product-gallery {
+  background: #f4f4f4;
+  align-self: start;
+}
+.product-gallery > img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+  filter: none;
+  padding: 15px;
+}
+.gallery-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 12px;
+  max-height: 160px;
+  overflow: auto;
+}
+.gallery-thumbs button {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #bbb;
+  padding: 2px;
+  background: white;
+}
+.gallery-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.gallery-thumbs button[aria-pressed='true'] {
+  outline: 2px solid #9b771a;
+}
+.dialog-product {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.dialog-copy {
+  min-width: 0;
+}
+.dialog-copy h2 {
+  font-size: 34px;
+  overflow-wrap: anywhere;
+}
+.product-details-dialog {
+  max-width: 1000px;
+}
+.cart-item > img {
+  object-fit: contain;
+  filter: none;
+  background: #f4f4f4;
+  padding: 8px;
+}
+.payment-buttons {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+.payment-buttons button {
+  width: 100%;
+  gap: 12px;
+  font-size: 14px;
+}
+.payment-buttons button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+.paypal-button {
+  background: #e9d498;
+  color: #151515;
+}
+.checkout-note {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.payment-result {
+  max-width: 720px;
+  margin: auto;
+  padding: 70px 5% 100px;
+}
+.payment-result h1 {
+  font-size: clamp(52px, 7vw, 88px);
+  overflow-wrap: anywhere;
+}
+.payment-result p {
+  margin: 20px 0;
+  line-height: 1.7;
+}
+.payment-result-code {
+  font-family: monospace;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  color: var(--accent-soft);
+}
+@media (max-width: 600px) {
+  .dialog-product {
+    grid-template-columns: 1fr;
+  }
+  .product-gallery > img {
+    height: 260px;
+  }
+}

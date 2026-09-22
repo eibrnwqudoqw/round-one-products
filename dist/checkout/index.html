@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111111" />
+    <title>Your Cart | Round One</title>
+    <meta
+      name="description"
+      content="Review your Round One equipment, update quantities and manage your shopping cart."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/site.css" />
+    <link rel="stylesheet" href="/pages.css" />
+    <link rel="stylesheet" href="/commerce.css" />
+  </head>
+  <body class="cart-page">
+    <a class="site-skip" href="#main-content">Skip to content</a>
+    <div class="announcement">THE RIGHT GEAR. THE RIGHT START. <span>YOUR ROUND ONE.</span></div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Round One home"
+        >ROUND<span class="brand-one">ONE<span class="brand-dot">®</span></span></a
+      ><button
+        class="nav-toggle"
+        aria-controls="site-navigation"
+        aria-expanded="false"
+        aria-label="Open navigation"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-navigation" aria-label="Main navigation">
+        <a href="/">HOME</a><a href="/personal-training/">PERSONAL TRAINING</a
+        ><a href="/shop/">SHOP</a><a href="/about/">ABOUT</a><a href="/contact/">CONTACT</a>
+      </nav>
+      <a class="cart-nav" href="/cart/" data-cart-link aria-label="Open cart, 0 items"
+        ><svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M5 7h14l1 14H4L5 7Z" />
+          <path d="M8 8V6a4 4 0 0 1 8 0v2" /></svg
+        ><span data-cart-count>0</span></a
+      >
+    </header>
+    <main id="main-content" class="payment-result">
+      <div class="eyebrow accent">ROUND ONE CHECKOUT</div>
+      <h1 id="payment-title">VERIFYING<br /><span>YOUR PAYMENT.</span></h1>
+      <p id="payment-message" role="status" aria-live="polite">
+        Please wait while the payment provider confirms your order.
+      </p>
+      <p id="payment-reference" class="payment-result-code"></p>
+      <button type="button" id="retry-payment" class="button button-white" hidden>
+        CHECK PAYMENT STATUS
+      </button>
+      <div class="page-actions">
+        <a href="/cart/" class="text-link">RETURN TO CART</a
+        ><a href="/shop/" class="text-link">CONTINUE SHOPPING</a>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <a class="brand" href="/" aria-label="Round One home"
+        >ROUND<span class="brand-one">ONE<span class="brand-dot">®</span></span></a
+      ><span>FOR THE FIGHTER YOU’RE BECOMING.</span>
+      <div class="footer-links">
+        <a href="/">Home</a><a href="/personal-training/">Personal Training</a
+        ><a href="/shop/">Shop</a><a href="/about/">About</a><a href="/contact/">Contact</a
+        ><a href="/cart/">Cart</a>
+      </div>
+      <div class="footer-policies">
+        <span aria-disabled="true">Privacy Policy <small>Coming soon</small></span
+        ><span aria-disabled="true">Terms and Conditions <small>Coming soon</small></span>
+      </div>
+      <p class="demo-note">Boxing equipment and personal training. Prices in AUD.</p>
+      <p class="copyright">© <span id="year">2026</span> Round One</p>
+    </footer>
+    <script src="/products.js"></script>
+    <script src="/cart-core.js"></script>
+    <script src="/cart-state.js"></script>
+    <script src="/site.js"></script>
+    <script src="/checkout/result.js"></script>
+  </body>
+</html>

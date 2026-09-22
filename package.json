@@ -1,0 +1,24 @@
+{
+  "name": "round-one-boxing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Round One catalogue storefront with Netlify Stripe and PayPal checkout",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/build-catalogue.mjs && node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build-catalogue.mjs && node scripts/verify.mjs",
+    "check": "node scripts/verify.mjs",
+    "test": "node --test tests/catalogue.test.mjs tests/payments.test.mjs tests/ui.test.mjs",
+    "test:http": "node tests/http.test.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "11.1.0",
+    "stripe": "22.6.2"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.1"
+  }
+}

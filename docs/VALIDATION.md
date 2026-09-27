@@ -1,3 +1,28 @@
+# Verification of the fresh complete export
+
+## Export checks - 27 September 2026
+
+Performed on the separately staged portable source, not on an earlier ZIP:
+
+- Latest saved Site version confirmed as 11, matching source commit `c47416f32a7ca872a89a9d54f69c51351ad766bf`.
+- `npm ci --prefer-offline --no-audit --no-fund`: installed 84 packages successfully from the supplied lockfile.
+- `npm run build`: passed; generated 20 catalogue entries and 100 product images. Verified all eight HTML pages, 135 public files, local links/anchors/assets and browser/server JavaScript syntax.
+- `npm test`: all 21 tests passed, including popup opening/closing, form discovery, validation, simulated delivery and failures, shop/cart and payment logic.
+- `npm run test:http`: passed; all public pages/assets served byte-for-byte, route redirects and content types checked, private paths and unsupported methods rejected.
+- Runtime source, product data and assets compared byte-for-byte with the latest saved checkout; only export documentation is changed or added.
+- ZIP entries checked against the manifest and source hashes; archive integrity and required files verified. The archive omits installed dependencies, Git history and host-only metadata.
+- Export checked for accidental secret files and common private credential patterns. .env.example contains placeholders only; payment tests contain explicit dummy fixture values.
+
+These checks do not contact Stripe/PayPal, deploy to Netlify, submit a live enquiry or deliver Gmail. They do not establish real account ownership, webhook delivery or production storage. Real provider and form tests remain required after configuration. The latest popup layout has not had a complete visual browser pass; the automated UI checks use jsdom. The existing homepage hero was previously checked at common mobile/tablet/desktop widths.
+
+The missing product mappings remain documented in CATALOGUE-AUDIT.md. Contact and training popup forms are included and prepared for Netlify Forms, superseding the older note below that contact submission was pending implementation. A training enquiry is not a confirmed booking. Remaining setup is described in README.md and FORMS.md.
+
+---
+
+## Historical integration verification (22 September 2026)
+
+The following records the original catalogue/payment work. Its 14-test count and original browser limitation describe that earlier run, not the fresh export checks above.
+
 # Validation of the Netlify commerce project
 
 Performed against the actual product repository commit `b349c5f2d66475668639f137786c8cf7734335b7` on 22 September 2026.

@@ -2,10 +2,19 @@
 import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(fileURLToPath(new URL('../dist/', import.meta.url)));
-const port = Number(process.env.PORT || 3000);
+// Accept the preview runner's flags while retaining local development defaults.
+const { values } = parseArgs({
+  options: {
+    host: { type: 'string', default: '127.0.0.1' },
+    port: { type: 'string' },
+    strictPort: { type: 'boolean' },
+  },
+});
+const port = Number(values.port || process.env.PORT || 3000);
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -59,7 +68,7 @@ export const server = http.createServer(async (req, res) => {
     res.end('Page not found');
   }
 });
-server.listen(port, '127.0.0.1', () => {
+server.listen(port, values.host, () => {
   console.log(`Round One: http://localhost:${server.address().port}`);
   console.log('Edit dist/ files, then refresh the browser. Press Ctrl+C to stop.');
 });

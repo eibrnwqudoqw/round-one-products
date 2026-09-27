@@ -67,11 +67,11 @@
     const status = document.querySelector('#coaching-dialog-status');
     status.replaceChildren();
     const label = document.createElement('strong');
-    label.textContent = question ? '[CONTACT EMAIL / ENQUIRY LINK]' : selected.meta;
+    label.textContent = question ? 'LET’S TALK BOXING.' : selected.meta;
     const message = document.createElement('p');
     message.textContent = question
-      ? 'Contact details have not been added yet. They will appear here once confirmed.'
-      : 'Prices, session details and booking links are awaiting confirmation. A session cannot be booked through this page yet.';
+      ? 'Tell us what you would like to know using the enquiry form.'
+      : 'Send an enquiry with your goals and preferred times. Prices and session availability will need to be confirmed before booking.';
     status.append(label, message);
     const key = currentAction === 'choose' ? 'first' : currentAction;
     let destination = safeDestination(
@@ -93,12 +93,36 @@
       link.className = 'button button-white';
       link.textContent = question ? 'SEND AN ENQUIRY' : 'CONTINUE TO BOOKING';
       status.append(link);
+    } else {
+      const link = document.createElement('a');
+      link.href = '#training-enquiry';
+      link.className = 'button button-white';
+      link.textContent = 'SEND AN ENQUIRY';
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        dialog.close();
+        window.roundOneOpenTrainingEnquiry(selectedFormat);
+      });
+      status.append(link);
     }
   }
   function openAction(action, format) {
     currentAction = action;
     if (format === 'private' || format === 'online') selectedFormat = format;
     if (action === 'review') selectedFormat = 'online';
+    // Until an external booking destination is configured, enquiry buttons open
+    // the form directly instead of making visitors go through a second popup.
+    const key = action === 'choose' ? 'first' : action;
+    const destinations = selectedFormat
+      ? [config.bookingUrls?.[selectedFormat]?.[key]]
+      : ['private', 'online'].map((format) => config.bookingUrls?.[format]?.[key]);
+    if (
+      (action === 'question' && !config.enquiryUrl && !config.contactEmail) ||
+      (action !== 'question' && !destinations.some(safeDestination))
+    ) {
+      window.roundOneOpenTrainingEnquiry(selectedFormat);
+      return;
+    }
     renderStatus();
     dialog.showModal();
   }

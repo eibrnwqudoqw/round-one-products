@@ -1,9 +1,20 @@
-# Source provenance
+# Fresh portable source export
 
-The website starts from the portable Round One version 8 export (website source commit `ba06d6f818e59b9e7882c0a9fbede2b4702beabb`). The catalogue is read from https://github.com/eibrnwqudoqw/round-one-products at commit `b349c5f2d66475668639f137786c8cf7734335b7`.
+Prepared 27 September 2026 from saved Round One website version 11.
+Website source commit: `c47416f32a7ca872a89a9d54f69c51351ad766bf`.
 
-The root products.json and complete images/ tree preserve that repository byte-for-byte. The generated display adapter keeps source fields and adds stable identifiers, price cents, fixed-size labels from titles, gallery paths and availability controls. Missing-image variants and the explicitly named glovestest entry are non-purchasable. Source values are never rewritten.
+The latest saved version and its source commit were checked against Sites metadata before this export. All tracked project files are included except `.openai/hosting.json`, which only identifies the original ChatGPT hosting project and is not needed by Netlify. Git history, installed node_modules, local credentials and hosting caches are intentionally not included. Dependencies install from package-lock.json with npm ci.
 
-The existing site design/pages are preserved. Home/Shop product regions, cart/payment behaviour and a checkout return page are updated for the requested commerce work. Shared footer wording no longer describes the real catalogue as sample products. Product photographs show their original colours so variant selection is meaningful.
+The runtime source and public assets preserve the latest website. The export adds START-HERE.md and EXPORT-MANIFEST.json and updates documentation to describe the current popup forms and verification. No website redesign, product corrections or new integrations were performed during export.
 
-This is a separate Netlify-ready project. The old hosted Astra site and the product GitHub repository were not modified or published. No editor credentials or Git history are included.
+## Catalogue provenance
+
+The original products.json and images/ folder come from https://github.com/eibrnwqudoqw/round-one-products at commit `b349c5f2d66475668639f137786c8cf7734335b7`. Their source values and image paths are preserved. There are 20 catalogue entries, including one non-purchasable test entry, and 100 supplied product photographs. Five referenced photographs were already missing from that repository. Affected variants remain unavailable. See CATALOGUE-AUDIT.md.
+
+Rebuilding creates browser catalogue data, public image copies and server catalogue data from the root data and images. Product images are not downloaded from GitHub at runtime. The source catalogue snapshot is not a claim that the external product repository has no newer changes.
+
+## Independence and remaining services
+
+This source does not depend on Astra/ChatGPT to run on Netlify. Netlify Forms handles enquiries after deployment and form detection; Netlify Functions and Blobs run the payment backend and private order storage. Stripe and PayPal accounts, environment settings and webhooks must be configured. Google Fonts is an external font dependency, documented in FONTS-AND-ASSETS.md. Training scheduling, branded order emails, inventory reservation and dispatch automation are not implemented. No private address or new credentials are added by this export.
+
+This operation only creates a download. It does not upload to your GitHub repository, deploy to Netlify, change payment accounts or modify the existing hosted website. The contents of round-one-boxing should be at your website repository root, or Netlify must use that folder as its base directory.

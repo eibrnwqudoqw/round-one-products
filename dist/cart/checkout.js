@@ -20,12 +20,12 @@
     );
     document.querySelector('.summary-currency').textContent =
       shipping === null
-        ? 'AUD · Shipping has not yet been configured.'
+        ? 'AUD · Shipping will be confirmed when checkout opens.'
         : `AUD · Includes ${window.roundOneMoney(shipping)} shipping. Available destinations: ${settings.countries.join(', ')}.`;
     note.textContent = busy
       ? 'Opening secure checkout...'
       : !settings
-        ? 'Payment options are unavailable here. Checkout runs on the configured Netlify site.'
+        ? 'Online checkout is not open yet. Your items will stay saved in this browser.'
         : !settings.stripe && !settings.paypal
           ? 'Payments are not open yet. Please check back soon.'
           : 'Choose a payment method. Your order and selected colours are checked securely before payment.';

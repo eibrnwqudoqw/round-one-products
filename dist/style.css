@@ -112,9 +112,10 @@ footer a:hover {
 }
 .hero {
   background: #171717;
-  min-height: 650px;
-  height: calc(100svh - 190px);
-  max-height: 880px;
+  /* Content determines the height; short screens and enlarged text may grow it. */
+  min-height: clamp(650px, calc(100svh - 190px), 880px);
+  display: flex;
+  flex-direction: column;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -136,7 +137,7 @@ footer a:hover {
   z-index: -2;
 }
 .hero-copy {
-  padding: 58px 5% 90px;
+  padding: 58px 5% 32px;
   position: relative;
   max-width: 850px;
 }
@@ -212,13 +213,22 @@ h1 > span {
 .button-dark:hover {
   background: var(--accent-soft);
 }
+.hero-category {
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 1.8px;
+  font-weight: 600;
+}
+.hero-copy .button {
+  max-width: 100%;
+}
 .hero-bottom {
-  position: absolute;
-  bottom: 25px;
-  left: 5%;
-  right: 5%;
+  position: relative;
+  margin-top: auto;
+  padding: 0 5% 25px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   font-size: 12px;
   letter-spacing: 1.8px;
@@ -765,10 +775,11 @@ dialog::backdrop {
   }
   .hero-shade {
     background:
-      linear-gradient(90deg, #00000090, transparent), linear-gradient(0deg, #00000030, transparent);
+      linear-gradient(90deg, #00000090, transparent),
+      linear-gradient(0deg, #00000030, transparent);
   }
   .hero-copy {
-    padding: 45px 6% 170px;
+    padding: 45px 6% 32px;
   }
   .hero .eyebrow {
     font-size: 12px;
@@ -793,15 +804,10 @@ dialog::backdrop {
     gap: 38px;
   }
   .hero-bottom {
-    left: 6%;
-    right: 6%;
+    padding: 0 6% 20px;
     font-size: 12px;
     line-height: 1.6;
     gap: 25px;
-    bottom: 20px;
-  }
-  .hero-bottom > span {
-    max-width: 160px;
   }
   .hero-bottom a {
     gap: 10px;

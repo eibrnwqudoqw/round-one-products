@@ -2,6 +2,10 @@
 
 This is the complete Round One website with its existing black/yellow/gold design, updated to use the actual product repository. It is plain HTML, CSS and JavaScript with **Netlify Functions** for Stripe and PayPal and **Netlify Blobs** for private order/payment records.
 
+## Fresh complete export - 27 September 2026
+
+This package matches saved website version 11 (source commit `c47416f32a7ca872a89a9d54f69c51351ad766bf`), including the homepage hero spacing fix and popup Contact and Personal Training enquiry forms. Read `START-HERE.md` for upload instructions. Runtime source, assets, product data and payment code are preserved; export documentation is updated.
+
 ## Start here
 
 Read `docs/CATALOGUE-AUDIT.md` first. It lists the five missing images, reused SKUs, two sub-dollar prices and the limits of Stripe verification without account credentials.
@@ -122,7 +126,9 @@ Stripe and PayPal can be configured independently. Unconfigured provider buttons
 
 ## Existing non-shop features
 
-Training/private-vs-online booking controls, About and Contact remain. Booking URLs are still configured in `dist/personal-training/config.js`; training prices and contact details still need your genuine business values. No booking scheduler or contact form backend was supplied by the product repository. Policy placeholders are preserved.
+Training/private-vs-online controls, About and Contact remain. Contact and Personal Training enquiries now open in popup dialogs only when triggered. Both forms have validation, success/error handling and honeypot spam protection; they are ready for Netlify Forms detection. See `docs/FORMS.md` for deployment and Gmail notifications. Ordinary static previews deliberately do not send submissions.
+
+Optional external booking URLs are configured in `dist/personal-training/config.js`; they are currently unset, so training buttons open the enquiry popup. An enquiry is not a confirmed booking. No automatic scheduler is configured. Training prices, contact details and policy placeholders still need genuine business values.
 
 ## Verification and limits
 
@@ -138,3 +144,7 @@ Official integration references used:
 - https://docs.stripe.com/checkout/fulfillment
 - https://developer.paypal.com/api/orders/v2/
 - https://developer.paypal.com/api/rest/webhooks/
+
+## Current ChatGPT Sites deployment
+
+The ChatGPT-hosted version publishes `dist/` as a static website. The catalogue and browser cart work there, but Netlify Functions are not executed on this host. Payment buttons remain disabled when no checkout backend is available. Deploy the complete repository to Netlify and follow the provider configuration above to enable Stripe and PayPal; no live payment credentials are included.

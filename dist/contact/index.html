@@ -14,13 +14,18 @@
     <link rel="stylesheet" href="/site.css" />
     <link rel="stylesheet" href="/pages.css" />
     <link rel="stylesheet" href="/commerce.css" />
+    <link rel="stylesheet" href="/forms.css" />
   </head>
   <body class="contact-page">
     <a class="site-skip" href="#main-content">Skip to content</a>
-    <div class="announcement">THE RIGHT GEAR. THE RIGHT START. <span>YOUR ROUND ONE.</span></div>
+    <div class="announcement">
+      THE RIGHT GEAR. THE RIGHT START. <span>YOUR ROUND ONE.</span>
+    </div>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Round One home"
-        >ROUND<span class="brand-one">ONE<span class="brand-dot">®</span></span></a
+        >ROUND<span class="brand-one"
+          >ONE<span class="brand-dot">®</span></span
+        ></a
       ><button
         class="nav-toggle"
         aria-controls="site-navigation"
@@ -34,7 +39,11 @@
         ><a href="/shop/">SHOP</a><a href="/about/">ABOUT</a
         ><a href="/contact/" aria-current="page">CONTACT</a>
       </nav>
-      <a class="cart-nav" href="/cart/" data-cart-link aria-label="Open cart, 0 items"
+      <a
+        class="cart-nav"
+        href="/cart/"
+        data-cart-link
+        aria-label="Open cart, 0 items"
         ><svg
           viewBox="0 0 24 24"
           fill="none"
@@ -58,7 +67,10 @@
           <article class="contact-card">
             <span class="card-kicker">TRAINING ENQUIRIES</span>
             <h2>FIND YOUR<br />CORNER.</h2>
-            <p>Private home-based sessions in Salisbury Heights, or live online coaching.</p>
+            <p>
+              Private home-based sessions in Salisbury Heights, or live online
+              coaching.
+            </p>
             <button class="button button-white" data-book-session>
               EXPLORE BOOKING OPTIONS<span aria-hidden="true">↗</span>
             </button>
@@ -66,41 +78,167 @@
           <article class="contact-card">
             <span class="card-kicker">EQUIPMENT ENQUIRIES</span>
             <h2>FIND YOUR<br />GEAR.</h2>
-            <p>Explore gloves, bags and pads, and review product details in the shop.</p>
+            <p>
+              Explore gloves, bags and pads, and review product details in the
+              shop.
+            </p>
             <a class="button button-white" href="/shop/"
               >SHOP EQUIPMENT<span aria-hidden="true">↗</span></a
             >
           </article>
         </div>
-        <div class="contact-pending">
+          <div class="contact-pending">
           <h2>GET IN TOUCH.</h2>
-          <p>[BUSINESS CONTACT EMAIL]</p>
-          <p>
-            Contact details are awaiting confirmation. An enquiry cannot be sent through this page
-            yet.
-          </p>
+          <p>Ask us about boxing equipment or training.</p>
+          <button type="button" class="button button-white contact-enquiry-link" data-open-enquiry="contact-form" aria-haspopup="dialog" aria-controls="contact-form">SEND A MESSAGE<span aria-hidden="true">↗</span></button>
         </div>
       </section>
     </main>
     <footer class="site-footer">
       <a class="brand" href="/" aria-label="Round One home"
-        >ROUND<span class="brand-one">ONE<span class="brand-dot">®</span></span></a
+        >ROUND<span class="brand-one"
+          >ONE<span class="brand-dot">®</span></span
+        ></a
       ><span>FOR THE FIGHTER YOU’RE BECOMING.</span>
       <div class="footer-links">
         <a href="/">Home</a><a href="/personal-training/">Personal Training</a
-        ><a href="/shop/">Shop</a><a href="/about/">About</a><a href="/contact/">Contact</a
-        ><a href="/cart/">Cart</a>
+        ><a href="/shop/">Shop</a><a href="/about/">About</a
+        ><a href="/contact/">Contact</a><a href="/cart/">Cart</a>
       </div>
       <div class="footer-policies">
-        <span aria-disabled="true">Privacy Policy <small>Coming soon</small></span
-        ><span aria-disabled="true">Terms and Conditions <small>Coming soon</small></span>
+        <span aria-disabled="true"
+          >Privacy Policy <small>Coming soon</small></span
+        ><span aria-disabled="true"
+          >Terms and Conditions <small>Coming soon</small></span
+        >
       </div>
-      <p class="demo-note">Boxing equipment and personal training. Prices in AUD.</p>
+      <p class="demo-note">
+        Boxing equipment and personal training. Prices in AUD.
+      </p>
       <p class="copyright">© <span id="year">2026</span> Round One</p>
     </footer>
+    <dialog id="contact-form" class="enquiry-dialog" aria-labelledby="contact-form-title">
+      <button type="button" class="enquiry-close" data-close-enquiry aria-label="Close enquiry form">×</button>
+          <h2 id="contact-form-title">GET IN TOUCH.</h2>
+          <p class="enquiry-intro">
+            Ask us about boxing equipment or training. All fields are required
+            except phone number.
+          </p>
+          <form
+            class="enquiry-form"
+            name="contact"
+            method="POST"
+            action="/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            data-enquiry-form
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="form-honeypot" hidden aria-hidden="true">
+              <label
+                >Leave this field empty:
+                <input name="bot-field" tabindex="-1" autocomplete="off"
+              /></label>
+            </p>
+            <p class="form-availability" data-form-availability hidden></p>
+            <div
+              class="form-status"
+              data-form-status
+              role="status"
+              aria-live="polite"
+              tabindex="-1"
+              hidden
+            ></div>
+            <div class="enquiry-fields">
+              <div class="enquiry-field">
+                <label for="contact-name">Name</label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  data-label="Name"
+                  aria-describedby="contact-name-error"
+                  required
+                  type="text"
+                  autocomplete="name"
+                  maxlength="160"
+                />
+
+                <p class="field-error" id="contact-name-error" hidden></p>
+              </div>
+              <div class="enquiry-field">
+                <label for="contact-email">Email</label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  data-label="Email"
+                  aria-describedby="contact-email-error"
+                  required
+                  type="email"
+                  autocomplete="email"
+                  maxlength="254"
+                />
+
+                <p class="field-error" id="contact-email-error" hidden></p>
+              </div>
+              <div class="enquiry-field">
+                <label for="contact-phone">Phone number (optional)</label>
+                <input
+                  id="contact-phone"
+                  name="phone"
+                  data-label="Phone number"
+                  aria-describedby="contact-phone-error"
+                  type="tel"
+                  autocomplete="tel"
+                  maxlength="40"
+                />
+
+                <p class="field-error" id="contact-phone-error" hidden></p>
+              </div>
+              <div class="enquiry-field">
+                <label for="contact-subject">Subject</label>
+                <input
+                  id="contact-subject"
+                  name="subject"
+                  data-label="Subject"
+                  aria-describedby="contact-subject-error"
+                  required
+                  type="text"
+                  autocomplete="off"
+                  maxlength="200"
+                />
+
+                <p class="field-error" id="contact-subject-error" hidden></p>
+              </div>
+              <div class="enquiry-field enquiry-field-wide">
+                <label for="contact-message">Message</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  data-label="Message"
+                  aria-describedby="contact-message-error"
+                  required
+                  rows="4"
+                  maxlength="4000"
+                ></textarea>
+
+                <p class="field-error" id="contact-message-error" hidden></p>
+              </div>
+            </div>
+            <button class="button button-white enquiry-submit" type="submit">
+              SEND MESSAGE<span aria-hidden="true">↗</span>
+            </button>
+            <noscript
+              ><p>
+                JavaScript is needed to open this popup. Form delivery is available
+                after this website is deployed with Netlify Forms enabled.
+              </p></noscript
+            >
+          </form>
+        </dialog>
     <script src="/products.js"></script>
     <script src="/cart-core.js"></script>
     <script src="/cart-state.js"></script>
     <script src="/site.js"></script>
+    <script src="/forms.js"></script>
   </body>
 </html>

@@ -1,0 +1,1360 @@
+{
+  "exported_at": "2026-09-27",
+  "source_version": 11,
+  "source_commit": "c47416f32a7ca872a89a9d54f69c51351ad766bf",
+  "framework": "HTML, CSS and JavaScript; Netlify Functions and Blobs",
+  "excluded": "Git history, node_modules, local credentials, hosting-only .openai metadata",
+  "manifest_note": "Lists every archive file except this manifest itself.",
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 818,
+      "sha256": "a6515a404a9e379b07af56000045967d8ed9892542e7b169d908d13ab2c4bdbc"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 60,
+      "sha256": "6045ce7dea8ffaeca7a8077ffe28d5258ed029a2502660079825d99e9f8ed93f"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "bytes": 1319,
+      "sha256": "ed697de57fbcbdb754c22fb5f4e7831412fb541a348c4d65b91c0bc85c138908"
+    },
+    {
+      "path": "README.md",
+      "bytes": 14755,
+      "sha256": "8a89af83afd04c7e006867e7f71146ced5328a8a76880efd2229e881f0fd374d"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 3974,
+      "sha256": "4fa78496c567f184b976159a639b6507d3efe6cfb7d3867658e074a226d946ec"
+    },
+    {
+      "path": "dist/about/index.html",
+      "bytes": 15507,
+      "sha256": "6ce8bff54d33f77b6616c8b79899074d950cb2f6414bb9b0fbe93100c94b39bc"
+    },
+    {
+      "path": "dist/assets/bag.webp",
+      "bytes": 39628,
+      "sha256": "f545d0464c6b9cc6bf324c3a5e74a5b1bd7efaf49f23f9b5b6ee8c244d44817f"
+    },
+    {
+      "path": "dist/assets/hero.webp",
+      "bytes": 207980,
+      "sha256": "cfe48a3484919cd2894cc3af5896fd1581e3af64385e4b650629d18333fbb701"
+    },
+    {
+      "path": "dist/assets/online-coaching-hero.webp",
+      "bytes": 173748,
+      "sha256": "70739aaa1b43d99af9227ecc12c93ba11ed9e3df611ad4f3bd88aeb86e0f560d"
+    },
+    {
+      "path": "dist/assets/online-coaching-training.webp",
+      "bytes": 158074,
+      "sha256": "6ed697d1e04b7354052bd5101855675498acaf3508f28a929808b0c81ed0ea3b"
+    },
+    {
+      "path": "dist/assets/pads.webp",
+      "bytes": 141678,
+      "sha256": "e0868116d7fb0ea1a241872020f979c3ed6069c89b4dcb36661601a5db508f9c"
+    },
+    {
+      "path": "dist/assets/private-home-training.webp",
+      "bytes": 123478,
+      "sha256": "8cfdae781d09f592a2ab4d94a08052d9e8831a1f078dc88b550dcc87cae5d5ea"
+    },
+    {
+      "path": "dist/cart/cart.js",
+      "bytes": 5195,
+      "sha256": "c80c74382cdb1671ee6943be9ed82a41c618338f1625926d69c03a7e8e2cdedc"
+    },
+    {
+      "path": "dist/cart/checkout.js",
+      "bytes": 4071,
+      "sha256": "4ec7f5ebcec649041fe85cdb07a843bf7434bbc1fad5f574b0186e2d44cdb236"
+    },
+    {
+      "path": "dist/cart/index.html",
+      "bytes": 6170,
+      "sha256": "929e6f45a9af370b54a91d769f460217549c55b13ce6b857084addba50b3d8ea"
+    },
+    {
+      "path": "dist/cart-core.js",
+      "bytes": 5812,
+      "sha256": "2a6b3f1b2beffc8daa01dc2b79f3db35982637405d0b97415f77d294c25fcd02"
+    },
+    {
+      "path": "dist/cart-state.js",
+      "bytes": 1632,
+      "sha256": "10f42cf5bb6e8463203090805cec3bffaf5dc642569a236abd6afabce7d940bb"
+    },
+    {
+      "path": "dist/checkout/index.html",
+      "bytes": 3711,
+      "sha256": "47d2a6bdf953f6f7fa793837ec334137480dd818e32fdf244ade4113694651b4"
+    },
+    {
+      "path": "dist/checkout/result.js",
+      "bytes": 3229,
+      "sha256": "845b377ba2e6bb1d8a1d47e36cef6b44e0b4de8d20ad5bf6fc5e9a96bee15500"
+    },
+    {
+      "path": "dist/checkout-config.js",
+      "bytes": 150,
+      "sha256": "63a99fcdea1dc5a28d707ede40c09a9ca498da4126e0cf0b758aa5f89038cdb2"
+    },
+    {
+      "path": "dist/commerce.css",
+      "bytes": 2452,
+      "sha256": "3990dd9f555e0af3a44f2136c065e3e2037edb36ca48e087bf52d4693865bf94"
+    },
+    {
+      "path": "dist/contact/index.html",
+      "bytes": 9388,
+      "sha256": "c283eaba0646e537a45298368e3f41d4c36df7cca163dd8752749eb1af268176"
+    },
+    {
+      "path": "dist/favicon.svg",
+      "bytes": 468,
+      "sha256": "689973f460d1fdca09834ade02e0f29b5e9aa073b9f54b9ccd8ee49f2e400ae6"
+    },
+    {
+      "path": "dist/forms.css",
+      "bytes": 3175,
+      "sha256": "31ae9a93d623666d761d3fbe1146da7bbc5f553746570c48ae4ace6bc76b7f1d"
+    },
+    {
+      "path": "dist/forms.js",
+      "bytes": 7113,
+      "sha256": "e8537b8ea68417e994765650212458649e0aa2c8314516a2c70c58b46a05358c"
+    },
+    {
+      "path": "dist/images/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "dist/images/bag1/1.png",
+      "bytes": 24756,
+      "sha256": "0df1dc6c2355c653c4b368aae69eb0e2b05ecb179b37b4610f53560e666da964"
+    },
+    {
+      "path": "dist/images/bag1/2.png",
+      "bytes": 23486,
+      "sha256": "f5c4fa30f86aec11f4baa63a70c4e86af17789bc26fb57de14b4f63948ac1abb"
+    },
+    {
+      "path": "dist/images/bag1/3.png",
+      "bytes": 4381,
+      "sha256": "802f8a6038c2eabeaa32814221a5ad5c5d46f28714aee6413423ec7a7d9583e6"
+    },
+    {
+      "path": "dist/images/bag2/1.png",
+      "bytes": 24756,
+      "sha256": "0df1dc6c2355c653c4b368aae69eb0e2b05ecb179b37b4610f53560e666da964"
+    },
+    {
+      "path": "dist/images/bag2/2.png",
+      "bytes": 23486,
+      "sha256": "f5c4fa30f86aec11f4baa63a70c4e86af17789bc26fb57de14b4f63948ac1abb"
+    },
+    {
+      "path": "dist/images/bag2/3.png",
+      "bytes": 4381,
+      "sha256": "802f8a6038c2eabeaa32814221a5ad5c5d46f28714aee6413423ec7a7d9583e6"
+    },
+    {
+      "path": "dist/images/bag3/1.png",
+      "bytes": 24756,
+      "sha256": "0df1dc6c2355c653c4b368aae69eb0e2b05ecb179b37b4610f53560e666da964"
+    },
+    {
+      "path": "dist/images/bag3/2.png",
+      "bytes": 23486,
+      "sha256": "f5c4fa30f86aec11f4baa63a70c4e86af17789bc26fb57de14b4f63948ac1abb"
+    },
+    {
+      "path": "dist/images/bag3/3.png",
+      "bytes": 4381,
+      "sha256": "802f8a6038c2eabeaa32814221a5ad5c5d46f28714aee6413423ec7a7d9583e6"
+    },
+    {
+      "path": "dist/images/bag4/1.png",
+      "bytes": 14584,
+      "sha256": "55f43cd019609c9ab52f32b652de0d369b70e9c18468960b14991db3f8ed0c2e"
+    },
+    {
+      "path": "dist/images/bag5/1.png",
+      "bytes": 27098,
+      "sha256": "af4e45eab763afd788158377656e900d4a1f0cc2a67c3884617fda7b26c900f0"
+    },
+    {
+      "path": "dist/images/bag5/2.png",
+      "bytes": 26012,
+      "sha256": "87d76132d86b796b1e3b5ca0db2819808c97546b32ce632198d2d1ff4cd5e3c7"
+    },
+    {
+      "path": "dist/images/bag5/3.png",
+      "bytes": 44260,
+      "sha256": "0d89399b4b8ef0573b0cbf36e99d763f3c905670528e245bf075b1ce8b31d9d7"
+    },
+    {
+      "path": "dist/images/bag5/4.png",
+      "bytes": 58506,
+      "sha256": "9f39dbea72b3a00987d869a50934968825cc9d150e2e949e348ec76890e33910"
+    },
+    {
+      "path": "dist/images/bag5/5.png",
+      "bytes": 22012,
+      "sha256": "f85380ed2c4963fb659ff327c95733e78675b657d399e5a3ba140db4b5d33397"
+    },
+    {
+      "path": "dist/images/bag5/6.png",
+      "bytes": 16598,
+      "sha256": "8bca264eccbafb4be3b6b658433c6928965c833d9c0031a3adcbb56199e77b8d"
+    },
+    {
+      "path": "dist/images/bag5/7.png",
+      "bytes": 98460,
+      "sha256": "14b1463098a63e362e3fc5300af49822dcc41a68aa160c5d9ea93c8cda71a0fd"
+    },
+    {
+      "path": "dist/images/bag5/8.png",
+      "bytes": 43832,
+      "sha256": "49b06dfdac9631b013caa0b4df523c492fb23ea3ab72da82aad4082b9199c86d"
+    },
+    {
+      "path": "dist/images/bag6/1.png",
+      "bytes": 23402,
+      "sha256": "4c3dd6b68db9fdc6d6ad0e99fdaf94bb4f78bfe1fa737574501e085ea50d4428"
+    },
+    {
+      "path": "dist/images/gloves1/1.png",
+      "bytes": 69366,
+      "sha256": "6c558b1b65bb0e39c1d024cec8bb48205ada1abc184a36636b339972776289dc"
+    },
+    {
+      "path": "dist/images/gloves1/2.png",
+      "bytes": 41056,
+      "sha256": "2e3c6e795717b2df5143209681ec41bfc5823436e154c397d800ce1cb08a45b9"
+    },
+    {
+      "path": "dist/images/gloves1/3.png",
+      "bytes": 44164,
+      "sha256": "a33129ff06d19d1397bb0ef009bb84a2cdbd96ffc4cab2afd6282db9bebb07fa"
+    },
+    {
+      "path": "dist/images/gloves10/1.png",
+      "bytes": 127940,
+      "sha256": "1bb0b154370ba797d44166ac5499d929bdd9a608af90b2eb8ae00fb2c8756fc2"
+    },
+    {
+      "path": "dist/images/gloves10/2.png",
+      "bytes": 108720,
+      "sha256": "abe71543e99001d30a5b748e91f09d2f621928f955defa87308dfccedc20c564"
+    },
+    {
+      "path": "dist/images/gloves10/3.png",
+      "bytes": 108720,
+      "sha256": "abe71543e99001d30a5b748e91f09d2f621928f955defa87308dfccedc20c564"
+    },
+    {
+      "path": "dist/images/gloves10/4.png",
+      "bytes": 107802,
+      "sha256": "7a8887f56527559611008e369c728d04b589e43f6ebc32b6404710200922f1b9"
+    },
+    {
+      "path": "dist/images/gloves10/5.png",
+      "bytes": 101962,
+      "sha256": "afa1088f1944be398f6f9ed85a831217cfcd3d3f02c39c38f751b095f9613f4b"
+    },
+    {
+      "path": "dist/images/gloves10/6.png",
+      "bytes": 107802,
+      "sha256": "7a8887f56527559611008e369c728d04b589e43f6ebc32b6404710200922f1b9"
+    },
+    {
+      "path": "dist/images/gloves2/1.png",
+      "bytes": 76630,
+      "sha256": "6f143a9c8efedac836eea61c394d2acfd3456aa4b6fe8bda8d6bbbca73e62dda"
+    },
+    {
+      "path": "dist/images/gloves2/2.png",
+      "bytes": 23986,
+      "sha256": "ef5b237db5801bed29568978a948c56dfcad4ebd0d5aecf79b0b5385ee5cbcda"
+    },
+    {
+      "path": "dist/images/gloves3/1.png",
+      "bytes": 59004,
+      "sha256": "eee89556de87a578a048798ef2ca01feaf57db5c92b138d17a27f77d2f013613"
+    },
+    {
+      "path": "dist/images/gloves3/2.png",
+      "bytes": 38146,
+      "sha256": "8c2d1c0035b4f08ac83cb7bc434225d29808a178f38f5951061cf2afb374f489"
+    },
+    {
+      "path": "dist/images/gloves3/3.png",
+      "bytes": 32446,
+      "sha256": "cc75f0fde3c63c89cfe432a8538ad74c44ded1738e01493604ae01436fe42980"
+    },
+    {
+      "path": "dist/images/gloves4/1.png",
+      "bytes": 94050,
+      "sha256": "1aea1729bf22f936bee4b043a99d67dcc78f46370c9fa60b34c34ab9bfee6069"
+    },
+    {
+      "path": "dist/images/gloves4/2.png",
+      "bytes": 79052,
+      "sha256": "62a406ba57dc37b327408b5882b51752c2f6bd1ff77fa079bb87bd7f9d4147c0"
+    },
+    {
+      "path": "dist/images/gloves4/3.png",
+      "bytes": 107452,
+      "sha256": "40876d5ecde461559705db89521b7260e30a4fd4e5d1c4a2afa79a0113ea8984"
+    },
+    {
+      "path": "dist/images/gloves4/4.png",
+      "bytes": 69460,
+      "sha256": "979aa2b74e44f8fb3fa0c455f9f1cc229a78089cebca8bb97e0df56646b0454e"
+    },
+    {
+      "path": "dist/images/gloves5/1.png",
+      "bytes": 89438,
+      "sha256": "fca62d1cf9d065a9d4f47007f3e377a7aa11d5ee8531be14843338c32bb48481"
+    },
+    {
+      "path": "dist/images/gloves5/10.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "dist/images/gloves5/2.png",
+      "bytes": 91014,
+      "sha256": "3e6f40ed178805962053c25bb3222408343ac7265b6085cd94ba3fdd12b6ac23"
+    },
+    {
+      "path": "dist/images/gloves5/3.png",
+      "bytes": 89986,
+      "sha256": "d28dd6c59b8cf11f0f3e8513856eac884e239f1e14985c44889e20c2a4d7b39f"
+    },
+    {
+      "path": "dist/images/gloves5/4.png",
+      "bytes": 101380,
+      "sha256": "bb6b93970ae2053093edc91f28b0cdb80c63396846c02873972f16c046303ebd"
+    },
+    {
+      "path": "dist/images/gloves5/5.png",
+      "bytes": 128826,
+      "sha256": "d6e3de1b1d253bbea444092e3da644269002cfbef553d309c18c5d788f16a62b"
+    },
+    {
+      "path": "dist/images/gloves5/6.png",
+      "bytes": 77264,
+      "sha256": "b811ed49331a4095a0dcd544b97e54b0dcc4e725cf57aa5bc66f63bd019c2cc8"
+    },
+    {
+      "path": "dist/images/gloves5/7.png",
+      "bytes": 81378,
+      "sha256": "0e50b7f2cb68da19b8bcf62963fe6f005158ffec7f231509da489bd68d9392bf"
+    },
+    {
+      "path": "dist/images/gloves5/8.png",
+      "bytes": 113006,
+      "sha256": "7ede6aed0e0d4b739f1f9a0cde833c5b8659513ae6906d6dc25b34a3b9821e91"
+    },
+    {
+      "path": "dist/images/gloves5/9.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "dist/images/gloves6/1.png",
+      "bytes": 89438,
+      "sha256": "fca62d1cf9d065a9d4f47007f3e377a7aa11d5ee8531be14843338c32bb48481"
+    },
+    {
+      "path": "dist/images/gloves6/2.png",
+      "bytes": 94216,
+      "sha256": "d0183907ac70abde20ff576b8f886a379cce6f52a0c57f8dbd7a1dcb00c8456f"
+    },
+    {
+      "path": "dist/images/gloves7/1.png",
+      "bytes": 101380,
+      "sha256": "bb6b93970ae2053093edc91f28b0cdb80c63396846c02873972f16c046303ebd"
+    },
+    {
+      "path": "dist/images/gloves7/10.png",
+      "bytes": 81132,
+      "sha256": "bb999f0e27bf2d564108178c10d32fa0aba69cc98e04c521f3542c4c8864e5c2"
+    },
+    {
+      "path": "dist/images/gloves7/11.png",
+      "bytes": 47504,
+      "sha256": "02d8499798bdfa5373a4ab49a04f43f9e174d5f6683ea587e852f1c08aefdb80"
+    },
+    {
+      "path": "dist/images/gloves7/12.png",
+      "bytes": 129640,
+      "sha256": "ab7fb0968f8f88e027e9cf15e1bb247184c346f1f7fc06176f03ba8cd3cdc0fd"
+    },
+    {
+      "path": "dist/images/gloves7/13.png",
+      "bytes": 71554,
+      "sha256": "a253b2eb5b37753583fe690051a91b28f14224c0fe3461d8e5d09605749e0c0b"
+    },
+    {
+      "path": "dist/images/gloves7/14.png",
+      "bytes": 67710,
+      "sha256": "22951d19c01b4065deda22172cb2b1f846e6efc04a0651c481138c978c910273"
+    },
+    {
+      "path": "dist/images/gloves7/15.png",
+      "bytes": 66538,
+      "sha256": "16a20a2ad136fb4747b1c6b8e12ec9b61563f03c15dc06d7322d0500a2dfe5f1"
+    },
+    {
+      "path": "dist/images/gloves7/16.png",
+      "bytes": 113006,
+      "sha256": "7ede6aed0e0d4b739f1f9a0cde833c5b8659513ae6906d6dc25b34a3b9821e91"
+    },
+    {
+      "path": "dist/images/gloves7/17.png",
+      "bytes": 113748,
+      "sha256": "47f69b969aaedbd2e875e40ecc67f01f30a1ff3e76b74de76d20ffe96aaab825"
+    },
+    {
+      "path": "dist/images/gloves7/18.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "dist/images/gloves7/19.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "dist/images/gloves7/2.png",
+      "bytes": 93662,
+      "sha256": "bf6c5aa260fd9faadfde69d62572820e2bbf249776d29115074ffd3bd26f531d"
+    },
+    {
+      "path": "dist/images/gloves7/21.png",
+      "bytes": 68216,
+      "sha256": "57e7393e581730c6b2d039caa6e05457c15230d7361b76b921c0b59399236baa"
+    },
+    {
+      "path": "dist/images/gloves7/22.png",
+      "bytes": 71164,
+      "sha256": "26e4b56a2eb3d7b761c92b097929f0c8f236cddab7610e9f6b07489bf4602681"
+    },
+    {
+      "path": "dist/images/gloves7/23.png",
+      "bytes": 79972,
+      "sha256": "3f8ce0efdea10de32c2da072f7c525fc9feb1a36de0d4512ebe34ba76e6c0486"
+    },
+    {
+      "path": "dist/images/gloves7/24.png",
+      "bytes": 69618,
+      "sha256": "1560977da9132a6d77ba34488a81cd1ef9cfb6390bec2db028d05cfaaedb6ddb"
+    },
+    {
+      "path": "dist/images/gloves7/25.png",
+      "bytes": 62024,
+      "sha256": "a867600ce17cbdc10d33e6a6e0018b5482c158731bc77dacf37d82018603c866"
+    },
+    {
+      "path": "dist/images/gloves7/3.png",
+      "bytes": 89438,
+      "sha256": "fca62d1cf9d065a9d4f47007f3e377a7aa11d5ee8531be14843338c32bb48481"
+    },
+    {
+      "path": "dist/images/gloves7/4.png",
+      "bytes": 109556,
+      "sha256": "61ffe1d2ca5669bcb23ab294f14740bb989868e2d1677b6341c154d9a3a6f3c0"
+    },
+    {
+      "path": "dist/images/gloves7/5.png",
+      "bytes": 83890,
+      "sha256": "1b6169fb1f537416ff35db4a48f5f49391d427ee0c00e54c74b1c8ae7a079ccd"
+    },
+    {
+      "path": "dist/images/gloves7/6.png",
+      "bytes": 43228,
+      "sha256": "81ee70c886bc25629cf696dc9722f61e443c340c38909f668f51b1998281e7b6"
+    },
+    {
+      "path": "dist/images/gloves7/7.png",
+      "bytes": 63666,
+      "sha256": "3c591beeb6d69f176bf3ab66353ada703fc6e496be3e04a9c12d42638e31ccd4"
+    },
+    {
+      "path": "dist/images/gloves7/8.png",
+      "bytes": 117522,
+      "sha256": "c14e231a788d83f97c6dcd43298ba735b2c8b6ad32559380939bf9aa2b7254d2"
+    },
+    {
+      "path": "dist/images/gloves7/9.png",
+      "bytes": 90106,
+      "sha256": "8c3f3accb90c1b3bcb5ac7d7a7f0737cbdbc4b615843a40ca460d8bf693c1ea6"
+    },
+    {
+      "path": "dist/images/gloves8/1.png",
+      "bytes": 36996,
+      "sha256": "f72cc76a2b7e2f00ec70d101f405f68d243d558489c5e07b5a1772fedef53bde"
+    },
+    {
+      "path": "dist/images/gloves9/1.png",
+      "bytes": 87072,
+      "sha256": "509bc57f302272858c64b9c1a638ba49b1c8d5b2ba634103cb559d2c28d58b73"
+    },
+    {
+      "path": "dist/images/gloves9/2.png",
+      "bytes": 137480,
+      "sha256": "d8abd7e0eb8198d0e8ea1b20ba4dc607adbca9046dcc61d154c794df34233c37"
+    },
+    {
+      "path": "dist/images/gloves9/3.png",
+      "bytes": 88326,
+      "sha256": "8139b124b24a745ac47131096d1af2df9be8e2d5373a05dd5d0cc3c4e3bd1248"
+    },
+    {
+      "path": "dist/images/gloves9/4.png",
+      "bytes": 110368,
+      "sha256": "f0e1fdb07d3a54b2a11b0f1cc75d01edf2b4ced3b760a4b8ffa74376db6e9667"
+    },
+    {
+      "path": "dist/images/gloves9/5.png",
+      "bytes": 86410,
+      "sha256": "280875dd2dd4251a1948e894a743240dcfaa683c5ff08b9ec6ab2671adabcbed"
+    },
+    {
+      "path": "dist/images/gloves9/6.png",
+      "bytes": 90482,
+      "sha256": "fd61514999ddf1e195881af39a3ea3af17b6de498975c4f2367f2a8bf973579e"
+    },
+    {
+      "path": "dist/images/gloves9/7.png",
+      "bytes": 101962,
+      "sha256": "afa1088f1944be398f6f9ed85a831217cfcd3d3f02c39c38f751b095f9613f4b"
+    },
+    {
+      "path": "dist/images/pads1/1.png",
+      "bytes": 75036,
+      "sha256": "61b0a2ad066c8f01a294babf5595720af8e25a800accafd91dec55771781c91b"
+    },
+    {
+      "path": "dist/images/pads1/10.png",
+      "bytes": 71698,
+      "sha256": "402f41c0ad18032b3d59d700229048e8d7e6e411e5abd35adbd7ee3b20cf27d5"
+    },
+    {
+      "path": "dist/images/pads1/11.png",
+      "bytes": 107702,
+      "sha256": "5c3e8f07c25441cc5dd368a75412fdd6d2871471328c9ecdd357709f77cf1357"
+    },
+    {
+      "path": "dist/images/pads1/2.png",
+      "bytes": 58346,
+      "sha256": "58d3a5f7e5b3f68b896664d5258ddef0e168b79efabacd66b18a6773a16bcd6e"
+    },
+    {
+      "path": "dist/images/pads1/3.png",
+      "bytes": 64154,
+      "sha256": "07d3fcd6d91b175943ff18cb695581001fd64361aa36756ca922a282fdefdc52"
+    },
+    {
+      "path": "dist/images/pads1/4.png",
+      "bytes": 101456,
+      "sha256": "3ab5b131040471680551c498ca28dd83d5281962e7d05929714df3e75d7d8d63"
+    },
+    {
+      "path": "dist/images/pads1/5.png",
+      "bytes": 85630,
+      "sha256": "75230c44dfc4e9b9016716c51cdeda24e8ff486aaec74824ed1ec579dace9c07"
+    },
+    {
+      "path": "dist/images/pads1/6.png",
+      "bytes": 93428,
+      "sha256": "decc359e46c8b7298123d884000921006ec27f8ad007810de3b4f05daced7bbf"
+    },
+    {
+      "path": "dist/images/pads1/7.png",
+      "bytes": 52596,
+      "sha256": "a7b4e01f92deece597fbab0f476ad1e0bed967a2a338c11ba97f2d0a8943b9b9"
+    },
+    {
+      "path": "dist/images/pads1/8.png",
+      "bytes": 99524,
+      "sha256": "43aa70141ec326c734e783ca2c7fc5448afae2accaad117fef311c3265795824"
+    },
+    {
+      "path": "dist/images/pads1/9.png",
+      "bytes": 144274,
+      "sha256": "8e15e07337e432ca695858d765a575ced1171d03957508ce85bf947404ca6cfe"
+    },
+    {
+      "path": "dist/images/pads2/1.png",
+      "bytes": 61322,
+      "sha256": "3e77703d6caf9777f33b4713f9279ed9643f9e786e5c8fc30a13f5e9e4ff2f6e"
+    },
+    {
+      "path": "dist/images/pads2/2.png",
+      "bytes": 63542,
+      "sha256": "108ec63b8ac4ecaee10957201f33e9afefc68272db07cc03bb1f54afc75c96a9"
+    },
+    {
+      "path": "dist/images/pads2/3.png",
+      "bytes": 93730,
+      "sha256": "38e179bab0b702a82f03b8eacaa47aa0bbfbb5aefb056ec89476dc7bf4149239"
+    },
+    {
+      "path": "dist/images/pads2/4.png",
+      "bytes": 80576,
+      "sha256": "28154a4d6e8576cc5bcbf1c934cd105f2b22b553e292e530e31068021dca7d79"
+    },
+    {
+      "path": "dist/images/pads2/5.png",
+      "bytes": 31638,
+      "sha256": "a676fbf242c865af88ee4041e1d7be5798dfac3d984eb18bedc630a0b3ebb74f"
+    },
+    {
+      "path": "dist/images/pads2/6.png",
+      "bytes": 70490,
+      "sha256": "225dd55529918690f1fce167ddf36731feabc415155a87ee6cd6e721a6917f7c"
+    },
+    {
+      "path": "dist/images/pads2/7.png",
+      "bytes": 85004,
+      "sha256": "5840ad362c9118b40b1290f95a9a42fa795f28d5f89b021ad519d64aa0d2fa6a"
+    },
+    {
+      "path": "dist/images/pads2/8.png",
+      "bytes": 85004,
+      "sha256": "5840ad362c9118b40b1290f95a9a42fa795f28d5f89b021ad519d64aa0d2fa6a"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 28870,
+      "sha256": "265d038c3d39c0c065a6631374422a2532219a89ba26fefc4f88d7422111fa09"
+    },
+    {
+      "path": "dist/online-coaching/index.html",
+      "bytes": 536,
+      "sha256": "6124321f1299654326db197de1fadd8458def06af71b3036e028a158cca7febb"
+    },
+    {
+      "path": "dist/pages.css",
+      "bytes": 18663,
+      "sha256": "0356edc3f8c83cc3723a71de0e07a75cd919f53f10ea5b599f2ea537d03a443e"
+    },
+    {
+      "path": "dist/personal-training/coaching.css",
+      "bytes": 22668,
+      "sha256": "fb57380dab863b274dcf6473c7722987529593c1fb3689f97b60ade51ddf23a2"
+    },
+    {
+      "path": "dist/personal-training/coaching.js",
+      "bytes": 7496,
+      "sha256": "7ef613fbedda09289eb5b48305e0ace46aa5f7a87ae604662ed62449a9a47b62"
+    },
+    {
+      "path": "dist/personal-training/config.js",
+      "bytes": 321,
+      "sha256": "1558404dc75741d9978c42b3a6a0fc4e8100da0680b5978d6c561bc1c5fa242e"
+    },
+    {
+      "path": "dist/personal-training/index.html",
+      "bytes": 19925,
+      "sha256": "8569a42aa871b00a0c27bdf6b8a98eeb1de056d8bc4460a8377fac2f74b8f159"
+    },
+    {
+      "path": "dist/products.js",
+      "bytes": 50105,
+      "sha256": "cfb37140ba24089e72c3fc038fd2276c7c7d43487f2988dd59a0cf83df143e17"
+    },
+    {
+      "path": "dist/products.json",
+      "bytes": 35664,
+      "sha256": "53f628c28c5bcc642ffe2a9de40b0c1320977b8f25c2cf5beeb274cdb0199149"
+    },
+    {
+      "path": "dist/script.js",
+      "bytes": 5795,
+      "sha256": "28c0fefec292254f12e017f1153b38b8d1e0a90cd93b1ab5ad4311b3e8c03440"
+    },
+    {
+      "path": "dist/shop/index.html",
+      "bytes": 26460,
+      "sha256": "9abf2bb82e0beccb5fff3ff91a922633851b6c9afe2f2736bd8a800162a103bb"
+    },
+    {
+      "path": "dist/site.css",
+      "bytes": 6719,
+      "sha256": "6a1fc4f21105bc75d4b8a0d4929dc9360139a2ebacc075afa5036ffef6e73e56"
+    },
+    {
+      "path": "dist/site.js",
+      "bytes": 4008,
+      "sha256": "de601d74626e25f3d4e9d09e027b45642065e974e58863556b85c0b73461d125"
+    },
+    {
+      "path": "dist/style.css",
+      "bytes": 21507,
+      "sha256": "4d74d92f798982f83e72cd655d6dfdefe7e7b00f087f2d217bc4801378648958"
+    },
+    {
+      "path": "docs/CATALOGUE-AUDIT.md",
+      "bytes": 4572,
+      "sha256": "ddff193315654401f15f0b022501368ec01772715f3b829e84574aec9ad0a356"
+    },
+    {
+      "path": "docs/EXPORT-NOTES.md",
+      "bytes": 2541,
+      "sha256": "2ae19052e9ad751dcb3fea69a8119632fef56b1c773ef9e6ed4b7439b148f155"
+    },
+    {
+      "path": "docs/FONTS-AND-ASSETS.md",
+      "bytes": 1718,
+      "sha256": "e0d6ddf85a4874af79cf150536abe601c1551f2a7a40bfa99b4f10902b2cfc8f"
+    },
+    {
+      "path": "docs/FORMS.md",
+      "bytes": 4299,
+      "sha256": "be4f700386e439500e8e68ce4a13a7518d74676f85cfa80d8dd2ca319f98316b"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "bytes": 5438,
+      "sha256": "5cec1a81e79182d83aa991fe46a02a93bc45191425641968268d6b554cd025e9"
+    },
+    {
+      "path": "images/.gitkeep",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "images/bag1/1.png",
+      "bytes": 24756,
+      "sha256": "0df1dc6c2355c653c4b368aae69eb0e2b05ecb179b37b4610f53560e666da964"
+    },
+    {
+      "path": "images/bag1/2.png",
+      "bytes": 23486,
+      "sha256": "f5c4fa30f86aec11f4baa63a70c4e86af17789bc26fb57de14b4f63948ac1abb"
+    },
+    {
+      "path": "images/bag1/3.png",
+      "bytes": 4381,
+      "sha256": "802f8a6038c2eabeaa32814221a5ad5c5d46f28714aee6413423ec7a7d9583e6"
+    },
+    {
+      "path": "images/bag2/1.png",
+      "bytes": 24756,
+      "sha256": "0df1dc6c2355c653c4b368aae69eb0e2b05ecb179b37b4610f53560e666da964"
+    },
+    {
+      "path": "images/bag2/2.png",
+      "bytes": 23486,
+      "sha256": "f5c4fa30f86aec11f4baa63a70c4e86af17789bc26fb57de14b4f63948ac1abb"
+    },
+    {
+      "path": "images/bag2/3.png",
+      "bytes": 4381,
+      "sha256": "802f8a6038c2eabeaa32814221a5ad5c5d46f28714aee6413423ec7a7d9583e6"
+    },
+    {
+      "path": "images/bag3/1.png",
+      "bytes": 24756,
+      "sha256": "0df1dc6c2355c653c4b368aae69eb0e2b05ecb179b37b4610f53560e666da964"
+    },
+    {
+      "path": "images/bag3/2.png",
+      "bytes": 23486,
+      "sha256": "f5c4fa30f86aec11f4baa63a70c4e86af17789bc26fb57de14b4f63948ac1abb"
+    },
+    {
+      "path": "images/bag3/3.png",
+      "bytes": 4381,
+      "sha256": "802f8a6038c2eabeaa32814221a5ad5c5d46f28714aee6413423ec7a7d9583e6"
+    },
+    {
+      "path": "images/bag4/1.png",
+      "bytes": 14584,
+      "sha256": "55f43cd019609c9ab52f32b652de0d369b70e9c18468960b14991db3f8ed0c2e"
+    },
+    {
+      "path": "images/bag5/1.png",
+      "bytes": 27098,
+      "sha256": "af4e45eab763afd788158377656e900d4a1f0cc2a67c3884617fda7b26c900f0"
+    },
+    {
+      "path": "images/bag5/2.png",
+      "bytes": 26012,
+      "sha256": "87d76132d86b796b1e3b5ca0db2819808c97546b32ce632198d2d1ff4cd5e3c7"
+    },
+    {
+      "path": "images/bag5/3.png",
+      "bytes": 44260,
+      "sha256": "0d89399b4b8ef0573b0cbf36e99d763f3c905670528e245bf075b1ce8b31d9d7"
+    },
+    {
+      "path": "images/bag5/4.png",
+      "bytes": 58506,
+      "sha256": "9f39dbea72b3a00987d869a50934968825cc9d150e2e949e348ec76890e33910"
+    },
+    {
+      "path": "images/bag5/5.png",
+      "bytes": 22012,
+      "sha256": "f85380ed2c4963fb659ff327c95733e78675b657d399e5a3ba140db4b5d33397"
+    },
+    {
+      "path": "images/bag5/6.png",
+      "bytes": 16598,
+      "sha256": "8bca264eccbafb4be3b6b658433c6928965c833d9c0031a3adcbb56199e77b8d"
+    },
+    {
+      "path": "images/bag5/7.png",
+      "bytes": 98460,
+      "sha256": "14b1463098a63e362e3fc5300af49822dcc41a68aa160c5d9ea93c8cda71a0fd"
+    },
+    {
+      "path": "images/bag5/8.png",
+      "bytes": 43832,
+      "sha256": "49b06dfdac9631b013caa0b4df523c492fb23ea3ab72da82aad4082b9199c86d"
+    },
+    {
+      "path": "images/bag6/1.png",
+      "bytes": 23402,
+      "sha256": "4c3dd6b68db9fdc6d6ad0e99fdaf94bb4f78bfe1fa737574501e085ea50d4428"
+    },
+    {
+      "path": "images/gloves1/1.png",
+      "bytes": 69366,
+      "sha256": "6c558b1b65bb0e39c1d024cec8bb48205ada1abc184a36636b339972776289dc"
+    },
+    {
+      "path": "images/gloves1/2.png",
+      "bytes": 41056,
+      "sha256": "2e3c6e795717b2df5143209681ec41bfc5823436e154c397d800ce1cb08a45b9"
+    },
+    {
+      "path": "images/gloves1/3.png",
+      "bytes": 44164,
+      "sha256": "a33129ff06d19d1397bb0ef009bb84a2cdbd96ffc4cab2afd6282db9bebb07fa"
+    },
+    {
+      "path": "images/gloves10/1.png",
+      "bytes": 127940,
+      "sha256": "1bb0b154370ba797d44166ac5499d929bdd9a608af90b2eb8ae00fb2c8756fc2"
+    },
+    {
+      "path": "images/gloves10/2.png",
+      "bytes": 108720,
+      "sha256": "abe71543e99001d30a5b748e91f09d2f621928f955defa87308dfccedc20c564"
+    },
+    {
+      "path": "images/gloves10/3.png",
+      "bytes": 108720,
+      "sha256": "abe71543e99001d30a5b748e91f09d2f621928f955defa87308dfccedc20c564"
+    },
+    {
+      "path": "images/gloves10/4.png",
+      "bytes": 107802,
+      "sha256": "7a8887f56527559611008e369c728d04b589e43f6ebc32b6404710200922f1b9"
+    },
+    {
+      "path": "images/gloves10/5.png",
+      "bytes": 101962,
+      "sha256": "afa1088f1944be398f6f9ed85a831217cfcd3d3f02c39c38f751b095f9613f4b"
+    },
+    {
+      "path": "images/gloves10/6.png",
+      "bytes": 107802,
+      "sha256": "7a8887f56527559611008e369c728d04b589e43f6ebc32b6404710200922f1b9"
+    },
+    {
+      "path": "images/gloves2/1.png",
+      "bytes": 76630,
+      "sha256": "6f143a9c8efedac836eea61c394d2acfd3456aa4b6fe8bda8d6bbbca73e62dda"
+    },
+    {
+      "path": "images/gloves2/2.png",
+      "bytes": 23986,
+      "sha256": "ef5b237db5801bed29568978a948c56dfcad4ebd0d5aecf79b0b5385ee5cbcda"
+    },
+    {
+      "path": "images/gloves3/1.png",
+      "bytes": 59004,
+      "sha256": "eee89556de87a578a048798ef2ca01feaf57db5c92b138d17a27f77d2f013613"
+    },
+    {
+      "path": "images/gloves3/2.png",
+      "bytes": 38146,
+      "sha256": "8c2d1c0035b4f08ac83cb7bc434225d29808a178f38f5951061cf2afb374f489"
+    },
+    {
+      "path": "images/gloves3/3.png",
+      "bytes": 32446,
+      "sha256": "cc75f0fde3c63c89cfe432a8538ad74c44ded1738e01493604ae01436fe42980"
+    },
+    {
+      "path": "images/gloves4/1.png",
+      "bytes": 94050,
+      "sha256": "1aea1729bf22f936bee4b043a99d67dcc78f46370c9fa60b34c34ab9bfee6069"
+    },
+    {
+      "path": "images/gloves4/2.png",
+      "bytes": 79052,
+      "sha256": "62a406ba57dc37b327408b5882b51752c2f6bd1ff77fa079bb87bd7f9d4147c0"
+    },
+    {
+      "path": "images/gloves4/3.png",
+      "bytes": 107452,
+      "sha256": "40876d5ecde461559705db89521b7260e30a4fd4e5d1c4a2afa79a0113ea8984"
+    },
+    {
+      "path": "images/gloves4/4.png",
+      "bytes": 69460,
+      "sha256": "979aa2b74e44f8fb3fa0c455f9f1cc229a78089cebca8bb97e0df56646b0454e"
+    },
+    {
+      "path": "images/gloves5/1.png",
+      "bytes": 89438,
+      "sha256": "fca62d1cf9d065a9d4f47007f3e377a7aa11d5ee8531be14843338c32bb48481"
+    },
+    {
+      "path": "images/gloves5/10.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "images/gloves5/2.png",
+      "bytes": 91014,
+      "sha256": "3e6f40ed178805962053c25bb3222408343ac7265b6085cd94ba3fdd12b6ac23"
+    },
+    {
+      "path": "images/gloves5/3.png",
+      "bytes": 89986,
+      "sha256": "d28dd6c59b8cf11f0f3e8513856eac884e239f1e14985c44889e20c2a4d7b39f"
+    },
+    {
+      "path": "images/gloves5/4.png",
+      "bytes": 101380,
+      "sha256": "bb6b93970ae2053093edc91f28b0cdb80c63396846c02873972f16c046303ebd"
+    },
+    {
+      "path": "images/gloves5/5.png",
+      "bytes": 128826,
+      "sha256": "d6e3de1b1d253bbea444092e3da644269002cfbef553d309c18c5d788f16a62b"
+    },
+    {
+      "path": "images/gloves5/6.png",
+      "bytes": 77264,
+      "sha256": "b811ed49331a4095a0dcd544b97e54b0dcc4e725cf57aa5bc66f63bd019c2cc8"
+    },
+    {
+      "path": "images/gloves5/7.png",
+      "bytes": 81378,
+      "sha256": "0e50b7f2cb68da19b8bcf62963fe6f005158ffec7f231509da489bd68d9392bf"
+    },
+    {
+      "path": "images/gloves5/8.png",
+      "bytes": 113006,
+      "sha256": "7ede6aed0e0d4b739f1f9a0cde833c5b8659513ae6906d6dc25b34a3b9821e91"
+    },
+    {
+      "path": "images/gloves5/9.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "images/gloves6/1.png",
+      "bytes": 89438,
+      "sha256": "fca62d1cf9d065a9d4f47007f3e377a7aa11d5ee8531be14843338c32bb48481"
+    },
+    {
+      "path": "images/gloves6/2.png",
+      "bytes": 94216,
+      "sha256": "d0183907ac70abde20ff576b8f886a379cce6f52a0c57f8dbd7a1dcb00c8456f"
+    },
+    {
+      "path": "images/gloves7/1.png",
+      "bytes": 101380,
+      "sha256": "bb6b93970ae2053093edc91f28b0cdb80c63396846c02873972f16c046303ebd"
+    },
+    {
+      "path": "images/gloves7/10.png",
+      "bytes": 81132,
+      "sha256": "bb999f0e27bf2d564108178c10d32fa0aba69cc98e04c521f3542c4c8864e5c2"
+    },
+    {
+      "path": "images/gloves7/11.png",
+      "bytes": 47504,
+      "sha256": "02d8499798bdfa5373a4ab49a04f43f9e174d5f6683ea587e852f1c08aefdb80"
+    },
+    {
+      "path": "images/gloves7/12.png",
+      "bytes": 129640,
+      "sha256": "ab7fb0968f8f88e027e9cf15e1bb247184c346f1f7fc06176f03ba8cd3cdc0fd"
+    },
+    {
+      "path": "images/gloves7/13.png",
+      "bytes": 71554,
+      "sha256": "a253b2eb5b37753583fe690051a91b28f14224c0fe3461d8e5d09605749e0c0b"
+    },
+    {
+      "path": "images/gloves7/14.png",
+      "bytes": 67710,
+      "sha256": "22951d19c01b4065deda22172cb2b1f846e6efc04a0651c481138c978c910273"
+    },
+    {
+      "path": "images/gloves7/15.png",
+      "bytes": 66538,
+      "sha256": "16a20a2ad136fb4747b1c6b8e12ec9b61563f03c15dc06d7322d0500a2dfe5f1"
+    },
+    {
+      "path": "images/gloves7/16.png",
+      "bytes": 113006,
+      "sha256": "7ede6aed0e0d4b739f1f9a0cde833c5b8659513ae6906d6dc25b34a3b9821e91"
+    },
+    {
+      "path": "images/gloves7/17.png",
+      "bytes": 113748,
+      "sha256": "47f69b969aaedbd2e875e40ecc67f01f30a1ff3e76b74de76d20ffe96aaab825"
+    },
+    {
+      "path": "images/gloves7/18.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "images/gloves7/19.png",
+      "bytes": 65920,
+      "sha256": "dabf2d8cf29b5d1ccb6e0de18fe75d947db9a72ff372f1270e676a925a96af2b"
+    },
+    {
+      "path": "images/gloves7/2.png",
+      "bytes": 93662,
+      "sha256": "bf6c5aa260fd9faadfde69d62572820e2bbf249776d29115074ffd3bd26f531d"
+    },
+    {
+      "path": "images/gloves7/21.png",
+      "bytes": 68216,
+      "sha256": "57e7393e581730c6b2d039caa6e05457c15230d7361b76b921c0b59399236baa"
+    },
+    {
+      "path": "images/gloves7/22.png",
+      "bytes": 71164,
+      "sha256": "26e4b56a2eb3d7b761c92b097929f0c8f236cddab7610e9f6b07489bf4602681"
+    },
+    {
+      "path": "images/gloves7/23.png",
+      "bytes": 79972,
+      "sha256": "3f8ce0efdea10de32c2da072f7c525fc9feb1a36de0d4512ebe34ba76e6c0486"
+    },
+    {
+      "path": "images/gloves7/24.png",
+      "bytes": 69618,
+      "sha256": "1560977da9132a6d77ba34488a81cd1ef9cfb6390bec2db028d05cfaaedb6ddb"
+    },
+    {
+      "path": "images/gloves7/25.png",
+      "bytes": 62024,
+      "sha256": "a867600ce17cbdc10d33e6a6e0018b5482c158731bc77dacf37d82018603c866"
+    },
+    {
+      "path": "images/gloves7/3.png",
+      "bytes": 89438,
+      "sha256": "fca62d1cf9d065a9d4f47007f3e377a7aa11d5ee8531be14843338c32bb48481"
+    },
+    {
+      "path": "images/gloves7/4.png",
+      "bytes": 109556,
+      "sha256": "61ffe1d2ca5669bcb23ab294f14740bb989868e2d1677b6341c154d9a3a6f3c0"
+    },
+    {
+      "path": "images/gloves7/5.png",
+      "bytes": 83890,
+      "sha256": "1b6169fb1f537416ff35db4a48f5f49391d427ee0c00e54c74b1c8ae7a079ccd"
+    },
+    {
+      "path": "images/gloves7/6.png",
+      "bytes": 43228,
+      "sha256": "81ee70c886bc25629cf696dc9722f61e443c340c38909f668f51b1998281e7b6"
+    },
+    {
+      "path": "images/gloves7/7.png",
+      "bytes": 63666,
+      "sha256": "3c591beeb6d69f176bf3ab66353ada703fc6e496be3e04a9c12d42638e31ccd4"
+    },
+    {
+      "path": "images/gloves7/8.png",
+      "bytes": 117522,
+      "sha256": "c14e231a788d83f97c6dcd43298ba735b2c8b6ad32559380939bf9aa2b7254d2"
+    },
+    {
+      "path": "images/gloves7/9.png",
+      "bytes": 90106,
+      "sha256": "8c3f3accb90c1b3bcb5ac7d7a7f0737cbdbc4b615843a40ca460d8bf693c1ea6"
+    },
+    {
+      "path": "images/gloves8/1.png",
+      "bytes": 36996,
+      "sha256": "f72cc76a2b7e2f00ec70d101f405f68d243d558489c5e07b5a1772fedef53bde"
+    },
+    {
+      "path": "images/gloves9/1.png",
+      "bytes": 87072,
+      "sha256": "509bc57f302272858c64b9c1a638ba49b1c8d5b2ba634103cb559d2c28d58b73"
+    },
+    {
+      "path": "images/gloves9/2.png",
+      "bytes": 137480,
+      "sha256": "d8abd7e0eb8198d0e8ea1b20ba4dc607adbca9046dcc61d154c794df34233c37"
+    },
+    {
+      "path": "images/gloves9/3.png",
+      "bytes": 88326,
+      "sha256": "8139b124b24a745ac47131096d1af2df9be8e2d5373a05dd5d0cc3c4e3bd1248"
+    },
+    {
+      "path": "images/gloves9/4.png",
+      "bytes": 110368,
+      "sha256": "f0e1fdb07d3a54b2a11b0f1cc75d01edf2b4ced3b760a4b8ffa74376db6e9667"
+    },
+    {
+      "path": "images/gloves9/5.png",
+      "bytes": 86410,
+      "sha256": "280875dd2dd4251a1948e894a743240dcfaa683c5ff08b9ec6ab2671adabcbed"
+    },
+    {
+      "path": "images/gloves9/6.png",
+      "bytes": 90482,
+      "sha256": "fd61514999ddf1e195881af39a3ea3af17b6de498975c4f2367f2a8bf973579e"
+    },
+    {
+      "path": "images/gloves9/7.png",
+      "bytes": 101962,
+      "sha256": "afa1088f1944be398f6f9ed85a831217cfcd3d3f02c39c38f751b095f9613f4b"
+    },
+    {
+      "path": "images/pads1/1.png",
+      "bytes": 75036,
+      "sha256": "61b0a2ad066c8f01a294babf5595720af8e25a800accafd91dec55771781c91b"
+    },
+    {
+      "path": "images/pads1/10.png",
+      "bytes": 71698,
+      "sha256": "402f41c0ad18032b3d59d700229048e8d7e6e411e5abd35adbd7ee3b20cf27d5"
+    },
+    {
+      "path": "images/pads1/11.png",
+      "bytes": 107702,
+      "sha256": "5c3e8f07c25441cc5dd368a75412fdd6d2871471328c9ecdd357709f77cf1357"
+    },
+    {
+      "path": "images/pads1/2.png",
+      "bytes": 58346,
+      "sha256": "58d3a5f7e5b3f68b896664d5258ddef0e168b79efabacd66b18a6773a16bcd6e"
+    },
+    {
+      "path": "images/pads1/3.png",
+      "bytes": 64154,
+      "sha256": "07d3fcd6d91b175943ff18cb695581001fd64361aa36756ca922a282fdefdc52"
+    },
+    {
+      "path": "images/pads1/4.png",
+      "bytes": 101456,
+      "sha256": "3ab5b131040471680551c498ca28dd83d5281962e7d05929714df3e75d7d8d63"
+    },
+    {
+      "path": "images/pads1/5.png",
+      "bytes": 85630,
+      "sha256": "75230c44dfc4e9b9016716c51cdeda24e8ff486aaec74824ed1ec579dace9c07"
+    },
+    {
+      "path": "images/pads1/6.png",
+      "bytes": 93428,
+      "sha256": "decc359e46c8b7298123d884000921006ec27f8ad007810de3b4f05daced7bbf"
+    },
+    {
+      "path": "images/pads1/7.png",
+      "bytes": 52596,
+      "sha256": "a7b4e01f92deece597fbab0f476ad1e0bed967a2a338c11ba97f2d0a8943b9b9"
+    },
+    {
+      "path": "images/pads1/8.png",
+      "bytes": 99524,
+      "sha256": "43aa70141ec326c734e783ca2c7fc5448afae2accaad117fef311c3265795824"
+    },
+    {
+      "path": "images/pads1/9.png",
+      "bytes": 144274,
+      "sha256": "8e15e07337e432ca695858d765a575ced1171d03957508ce85bf947404ca6cfe"
+    },
+    {
+      "path": "images/pads2/1.png",
+      "bytes": 61322,
+      "sha256": "3e77703d6caf9777f33b4713f9279ed9643f9e786e5c8fc30a13f5e9e4ff2f6e"
+    },
+    {
+      "path": "images/pads2/2.png",
+      "bytes": 63542,
+      "sha256": "108ec63b8ac4ecaee10957201f33e9afefc68272db07cc03bb1f54afc75c96a9"
+    },
+    {
+      "path": "images/pads2/3.png",
+      "bytes": 93730,
+      "sha256": "38e179bab0b702a82f03b8eacaa47aa0bbfbb5aefb056ec89476dc7bf4149239"
+    },
+    {
+      "path": "images/pads2/4.png",
+      "bytes": 80576,
+      "sha256": "28154a4d6e8576cc5bcbf1c934cd105f2b22b553e292e530e31068021dca7d79"
+    },
+    {
+      "path": "images/pads2/5.png",
+      "bytes": 31638,
+      "sha256": "a676fbf242c865af88ee4041e1d7be5798dfac3d984eb18bedc630a0b3ebb74f"
+    },
+    {
+      "path": "images/pads2/6.png",
+      "bytes": 70490,
+      "sha256": "225dd55529918690f1fce167ddf36731feabc415155a87ee6cd6e721a6917f7c"
+    },
+    {
+      "path": "images/pads2/7.png",
+      "bytes": 85004,
+      "sha256": "5840ad362c9118b40b1290f95a9a42fa795f28d5f89b021ad519d64aa0d2fa6a"
+    },
+    {
+      "path": "images/pads2/8.png",
+      "bytes": 85004,
+      "sha256": "5840ad362c9118b40b1290f95a9a42fa795f28d5f89b021ad519d64aa0d2fa6a"
+    },
+    {
+      "path": "lib/catalogue-data.json",
+      "bytes": 49989,
+      "sha256": "5e5aefddff32e5b958fb8d0130555ff310046e55408380ac784a76721082eab7"
+    },
+    {
+      "path": "lib/catalogue.mjs",
+      "bytes": 2653,
+      "sha256": "afb164e7b8beec16dd7e2d2f6d4376b4a4ba9df60c6b75ac4118b6507d2cdc7b"
+    },
+    {
+      "path": "lib/http.mjs",
+      "bytes": 2661,
+      "sha256": "de35db93e7ab57d3ee5c23713cc7cc12f54b0a53eba5b4a2871ef42cb5103c30"
+    },
+    {
+      "path": "lib/image-manifest.json",
+      "bytes": 2532,
+      "sha256": "dec8305aac3a3f340cb98581b7d77d1a95a1814c512b544908ee997faf1b6974"
+    },
+    {
+      "path": "lib/payments.mjs",
+      "bytes": 18595,
+      "sha256": "bf89879f15bc2d3060d3b4865016085bb81b946aa239b1b42bbdbea0696b0ce1"
+    },
+    {
+      "path": "netlify/functions/checkout-config.mjs",
+      "bytes": 382,
+      "sha256": "2b2453eca30a4d73da9013f03e323355d6d33746c01466eb99498756a5e8e741"
+    },
+    {
+      "path": "netlify/functions/create-checkout.mjs",
+      "bytes": 349,
+      "sha256": "eb83c25bdeb444d2334ba7108cceb2582e1c983742a820b23b1d9ab8679dc3ad"
+    },
+    {
+      "path": "netlify/functions/payment-status.mjs",
+      "bytes": 349,
+      "sha256": "9a53416edcd1724ad61f840cf26e031cb00750df2abf5fd4686d543f3f8ff6dc"
+    },
+    {
+      "path": "netlify/functions/paypal-webhook.mjs",
+      "bytes": 368,
+      "sha256": "312f4bda4afc928afea7c8c4713a070d1dfab41fd2d6cd68017d2f7922273136"
+    },
+    {
+      "path": "netlify/functions/stripe-webhook.mjs",
+      "bytes": 368,
+      "sha256": "71c9577ea3cdca854c2c50f96f536b2c20585e66148fbaeafdfd325484120789"
+    },
+    {
+      "path": "netlify.toml",
+      "bytes": 585,
+      "sha256": "943522023e8324ab6e8a620d804df31ba17351816609636169dcd1ab998fbcd7"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 39947,
+      "sha256": "83023cb73339797ac2e64a93037a5721c37ea0a70e96d34a9ecd7acc9c9740bb"
+    },
+    {
+      "path": "package.json",
+      "bytes": 741,
+      "sha256": "4aa3e9c005029a8159cad765097f9dd2fb634d04e232701d2706f4895a0790c6"
+    },
+    {
+      "path": "products.json",
+      "bytes": 35664,
+      "sha256": "53f628c28c5bcc642ffe2a9de40b0c1320977b8f25c2cf5beeb274cdb0199149"
+    },
+    {
+      "path": "scripts/build-catalogue.mjs",
+      "bytes": 4626,
+      "sha256": "5f8a75c005ea9e9403e404e07272ea46442c1605541ad962feb1e9659a9f43c4"
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "bytes": 2588,
+      "sha256": "f99a6f415eb6016b5a369e390b4d0f6ce4bcfec5d39436d33e46601c029013fd"
+    },
+    {
+      "path": "scripts/verify.mjs",
+      "bytes": 3931,
+      "sha256": "3e3379feb57d74cda66e876c6e83c9cb4341e0fe491e94c3ee33a13a473af1d7"
+    },
+    {
+      "path": "tests/cart.test.cjs",
+      "bytes": 4885,
+      "sha256": "c160a917e2e37d284ccb00454c6285e4c626ef6a5d56eef147bf13f1027929f1"
+    },
+    {
+      "path": "tests/catalogue.test.mjs",
+      "bytes": 4216,
+      "sha256": "60ada7f9a395819161d8c6661469abb9fa54f605c89e0a5db8c5e01394573a1b"
+    },
+    {
+      "path": "tests/forms.test.mjs",
+      "bytes": 7416,
+      "sha256": "caef73c45a57d4f04681dc26d2e0998b9a39523b1b8afd20b2120cb8fd9215ae"
+    },
+    {
+      "path": "tests/http.test.mjs",
+      "bytes": 2205,
+      "sha256": "9e0d7095164eef819b973cdb33dc779158b4d8335acb78b8ac358de86696873c"
+    },
+    {
+      "path": "tests/payments.test.mjs",
+      "bytes": 10553,
+      "sha256": "75f04ae9977ce699b45f9ff8a44ea003d6e485764421816debfe019c4dccf82d"
+    },
+    {
+      "path": "tests/responsive-check.html",
+      "bytes": 1492,
+      "sha256": "ae11e15d4277b48d617e934f9ed8227a1003b8661266706ab7cc162b73f06eae"
+    },
+    {
+      "path": "tests/ui.test.mjs",
+      "bytes": 4286,
+      "sha256": "2044f572c5df58558b298e6d1b4d206472cb7e079fc84baac763fc2cc5861e05"
+    }
+  ]
+}

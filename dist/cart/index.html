@@ -108,18 +108,22 @@
                 type="button"
                 class="button button-white"
                 id="checkout-button"
+                aria-label="Pay by card with Stripe, Apple Pay or Visa"
                 data-payment-provider="stripe"
                 disabled
               >
-                <span class="payment-brand payment-brand-stripe" aria-hidden="true">stripe</span>
-                <span>PAY BY CARD</span></button
+                <span class="card-brand-row" aria-hidden="true">
+                  <img class="payment-logo payment-logo-stripe" src="/assets/payment/stripe.webp" alt="" />
+                  <img class="payment-logo payment-logo-apple" src="/assets/payment/apple-pay.png" alt="" />
+                  <img class="payment-logo payment-logo-visa" src="/assets/payment/visa.webp" alt="" />
+                </span></button
               ><button
                 type="button"
                 class="button paypal-button"
                 data-payment-provider="paypal"
                 disabled
               >
-                <span class="payment-brand payment-brand-paypal" aria-hidden="true"><span class="paypal-p">P</span><span class="paypal-word">PayPal</span></span>
+                <img class="payment-logo payment-logo-paypal" src="/assets/payment/paypal.png" alt="" aria-hidden="true" />
                 <span>PAY WITH PAYPAL</span>
               </button>
             </div>

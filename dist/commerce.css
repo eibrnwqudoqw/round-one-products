@@ -167,3 +167,31 @@
     height: 260px;
   }
 }
+
+/* Payment method logos */
+.card-brand-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  min-height: 32px;
+}
+.payment-logo {
+  display: block;
+  width: auto;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+.payment-logo-stripe { height: 25px; }
+.payment-logo-apple { height: 31px; }
+.payment-logo-visa { height: 22px; }
+.payment-logo-paypal { height: 29px; max-width: 122px; }
+.paypal-button { gap: 14px; }
+@media (max-width: 520px) {
+  .card-brand-row { gap: 15px; }
+  .payment-logo-stripe { height: 22px; }
+  .payment-logo-apple { height: 27px; }
+  .payment-logo-visa { height: 19px; }
+  .payment-logo-paypal { height: 25px; max-width: 108px; }
+  .paypal-button { gap: 10px; }
+}

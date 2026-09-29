@@ -5,136 +5,159 @@
   const gsap = window.gsap;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
-
   if (window.ScrollTrigger) gsap.registerPlugin(window.ScrollTrigger);
 
   const q = (s, root = document) => Array.from(root.querySelectorAll(s));
+  const one = (s, root = document) => root.querySelector(s);
 
-  // Header + page entrance
-  const header = document.querySelector('.site-header');
-  if (header) gsap.from(header, { y: -26, opacity: 0, duration: 0.75, ease: 'power3.out' });
+  // Strong first-load sequence on EVERY page.
+  const header = one('.site-header');
+  const announcement = one('.announcement');
+  const main = one('main');
+  const firstBlock = main && Array.from(main.children).find((el) => el.nodeType === 1);
+  const entrance = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-  const hero = document.querySelector('.hero');
+  if (announcement) entrance.from(announcement, { y: -50, opacity: 0, duration: 0.55 }, 0);
+  if (header) entrance.from(header, { y: -90, opacity: 0, duration: 0.85 }, 0.08);
+
+  const hero = one('.hero');
   if (hero) {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    const image = hero.querySelector('.hero-image');
-    if (image) tl.fromTo(image, { scale: 1.08 }, { scale: 1, duration: 1.35 }, 0);
-    const eyebrow = hero.querySelector('.eyebrow');
-    if (eyebrow) tl.from(eyebrow, { y: 22, opacity: 0, duration: 0.55 }, 0.18);
-    const title = hero.querySelector('h1');
-    if (title) tl.from(title, { y: 48, opacity: 0, duration: 0.8 }, 0.26);
-    const copy = hero.querySelector('.hero-copy p');
-    if (copy) tl.from(copy, { y: 24, opacity: 0, duration: 0.6 }, 0.42);
-    const category = hero.querySelector('.hero-category');
-    if (category) tl.from(category, { y: 18, opacity: 0, duration: 0.5 }, 0.5);
-    const cta = hero.querySelector('.hero-copy .button');
-    if (cta) tl.from(cta, { y: 18, opacity: 0, duration: 0.5 }, 0.56);
+    const image = one('.hero-image', hero);
+    const shade = one('.hero-shade', hero);
+    const copyChildren = q('.hero-copy > *', hero);
+    const bottom = one('.hero-bottom', hero);
+    if (image) entrance.fromTo(image,
+      { scale: 1.28, filter: 'blur(8px)', opacity: 0.55 },
+      { scale: 1, filter: 'blur(0px)', opacity: 1, duration: 1.65, ease: 'expo.out' }, 0.05);
+    if (shade) entrance.from(shade, { opacity: 0, duration: 1.2 }, 0.18);
+    if (copyChildren.length) entrance.from(copyChildren, {
+      y: 95, opacity: 0, rotationX: -18, transformOrigin: '50% 100%',
+      duration: 0.9, stagger: 0.11, ease: 'back.out(1.35)'
+    }, 0.3);
+    if (bottom) entrance.from(bottom, { y: 50, opacity: 0, duration: 0.7 }, 0.85);
 
     if (window.ScrollTrigger && image) {
       gsap.to(image, {
-        yPercent: 9,
-        scale: 1.035,
-        ease: 'none',
-        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.7 },
+        yPercent: 18, scale: 1.08, ease: 'none',
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.65 }
       });
     }
+  } else if (firstBlock) {
+    const children = Array.from(firstBlock.children).filter((el) => el.tagName !== 'SCRIPT');
+    entrance.from(firstBlock, { y: 75, opacity: 0, scale: 0.975, duration: 0.9 }, 0.22);
+    if (children.length) entrance.from(children, {
+      y: 55, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out'
+    }, 0.38);
   }
 
-  // Generic section reveals on every page.
-  if (window.ScrollTrigger) {
-    q('main section:not(.hero), .shop-header, .cart-page > *, .checkout-page > *, .contact-page > *, .about-page > *, .coaching-page > *').forEach((section) => {
-      gsap.from(section, {
-        y: 38,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: section, start: 'top 88%', once: true },
-      });
-    });
+  if (!window.ScrollTrigger) return;
 
-    q('.section-top h2, .training-title h2, .closing h2, .shop-heading').forEach((heading) => {
-      gsap.from(heading, {
-        y: 34,
-        opacity: 0,
-        duration: 0.75,
-        ease: 'power4.out',
-        scrollTrigger: { trigger: heading, start: 'top 90%', once: true },
-      });
-    });
+  // Big cinematic section entrances while scrolling.
+  const sectionSelector = [
+    'main section:not(.hero)', '.shop-header', '.catalog-bar', '.cart-page > *',
+    '.checkout-page > *', '.contact-page > *', '.about-page > *', '.coaching-page > *'
+  ].join(',');
 
-    const cards = q('.product');
-    cards.forEach((card, index) => {
-      gsap.from(card, {
-        y: 34,
-        opacity: 0,
-        duration: 0.62,
-        delay: (index % 4) * 0.055,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: card, start: 'top 94%', once: true },
-      });
+  q(sectionSelector).forEach((section, i) => {
+    if (section === firstBlock && !hero) return;
+    const direction = i % 2 === 0 ? -1 : 1;
+    gsap.from(section, {
+      x: direction * 70,
+      y: 85,
+      opacity: 0,
+      scale: 0.965,
+      rotation: direction * 1.2,
+      duration: 1.05,
+      ease: 'power4.out',
+      clearProps: 'transform',
+      scrollTrigger: { trigger: section, start: 'top 86%', once: true }
     });
-  }
+  });
 
-  // Premium product-card micro interactions.
+  // Headings rise dramatically and settle into place.
+  q('h1, .section-top h2, .training-title h2, .closing h2, .shop-heading, main h2').forEach((heading) => {
+    if (hero && hero.contains(heading)) return;
+    gsap.from(heading, {
+      y: 70, opacity: 0, skewY: 3, duration: 0.9, ease: 'expo.out',
+      scrollTrigger: { trigger: heading, start: 'top 91%', once: true }
+    });
+  });
+
+  // Product grids animate as a strong wave instead of tiny individual fades.
+  q('.product-grid').forEach((grid) => {
+    const cards = q('.product', grid);
+    if (!cards.length) return;
+    gsap.from(cards, {
+      y: 100,
+      opacity: 0,
+      scale: 0.86,
+      rotationY: 9,
+      transformPerspective: 900,
+      duration: 0.9,
+      stagger: { each: 0.10, from: 'start' },
+      ease: 'back.out(1.25)',
+      clearProps: 'transform',
+      scrollTrigger: { trigger: grid, start: 'top 84%', once: true }
+    });
+  });
+
+  // Forms, list rows and content blocks cascade into view.
+  q('form, .training-list, .contact-card, .about-card, .checkout-card, .cart-summary').forEach((block) => {
+    const kids = Array.from(block.children);
+    if (!kids.length) return;
+    gsap.from(kids, {
+      x: 55, y: 25, opacity: 0, duration: 0.7, stagger: 0.075, ease: 'power3.out',
+      scrollTrigger: { trigger: block, start: 'top 87%', once: true }
+    });
+  });
+
+  // Stronger product hover depth.
   q('.product').forEach((card) => {
-    const visual = card.querySelector('.product-visual');
-    const image = card.querySelector('.product-visual img');
+    const visual = one('.product-visual', card);
+    const image = visual && one('img', visual);
     card.addEventListener('mouseenter', () => {
-      gsap.to(card, { y: -7, duration: 0.28, ease: 'power2.out' });
-      if (image) gsap.to(image, { scale: 1.055, duration: 0.45, ease: 'power2.out' });
+      gsap.to(card, { y: -14, scale: 1.025, duration: 0.3, ease: 'power3.out' });
+      if (image) gsap.to(image, { scale: 1.10, rotation: 0.6, duration: 0.5, ease: 'power3.out' });
     });
     card.addEventListener('mouseleave', () => {
-      gsap.to(card, { y: 0, duration: 0.32, ease: 'power2.out' });
-      if (image) gsap.to(image, { scale: 1, duration: 0.42, ease: 'power2.out' });
-      if (visual) gsap.to(visual, { x: 0, y: 0, duration: 0.3 });
+      gsap.to(card, { y: 0, scale: 1, duration: 0.38, ease: 'power3.out' });
+      if (image) gsap.to(image, { scale: 1, rotation: 0, duration: 0.45, ease: 'power3.out' });
+      if (visual) gsap.to(visual, { x: 0, y: 0, duration: 0.35 });
     });
-    if (visual) {
+    if (visual && matchMedia('(hover:hover) and (pointer:fine)').matches) {
       visual.addEventListener('mousemove', (event) => {
         const r = visual.getBoundingClientRect();
-        const x = (event.clientX - r.left - r.width / 2) * 0.025;
-        const y = (event.clientY - r.top - r.height / 2) * 0.025;
-        gsap.to(visual, { x, y, duration: 0.35, ease: 'power2.out' });
+        gsap.to(visual, {
+          x: (event.clientX - r.left - r.width / 2) * 0.055,
+          y: (event.clientY - r.top - r.height / 2) * 0.055,
+          duration: 0.35, ease: 'power2.out'
+        });
       });
     }
   });
 
-  // Subtle magnetic CTA movement on pointer devices.
+  // Noticeable magnetic CTAs on desktop.
   if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
     q('.button, .card-add-button, .filter').forEach((button) => {
       button.addEventListener('mousemove', (event) => {
         const r = button.getBoundingClientRect();
         gsap.to(button, {
-          x: (event.clientX - r.left - r.width / 2) * 0.055,
-          y: (event.clientY - r.top - r.height / 2) * 0.08,
-          duration: 0.3,
-          ease: 'power2.out',
+          x: (event.clientX - r.left - r.width / 2) * 0.12,
+          y: (event.clientY - r.top - r.height / 2) * 0.15,
+          scale: 1.035, duration: 0.28, ease: 'power2.out'
         });
       });
       button.addEventListener('mouseleave', () =>
-        gsap.to(button, { x: 0, y: 0, duration: 0.35, ease: 'elastic.out(1, .45)' }),
+        gsap.to(button, { x: 0, y: 0, scale: 1, duration: 0.5, ease: 'elastic.out(1, .4)' })
       );
     });
   }
 
-  // Training rows reveal in sequence.
-  if (window.ScrollTrigger) {
-    const rows = q('.training-list > div');
-    if (rows.length) {
-      gsap.from(rows, {
-        x: 28,
-        opacity: 0,
-        duration: 0.55,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: rows[0].parentElement, start: 'top 82%', once: true },
-      });
-    }
-  }
-
-  // Cart badge pop whenever cart changes.
   window.addEventListener('round-one-cart-change', () => {
     q('[data-cart-count]').forEach((badge) =>
-      gsap.fromTo(badge, { scale: 1.5 }, { scale: 1, duration: 0.45, ease: 'back.out(2.5)' }),
+      gsap.fromTo(badge, { scale: 1.9, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.55, ease: 'back.out(3)' })
     );
   });
+
+  ScrollTrigger.refresh();
 })();

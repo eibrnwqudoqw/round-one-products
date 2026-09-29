@@ -9,20 +9,3 @@
 .hero .hero-copy > *:nth-child(1){animation-delay:.15s}.hero .hero-copy > *:nth-child(2){animation-delay:.27s}.hero .hero-copy > *:nth-child(3){animation-delay:.39s}.hero .hero-copy > *:nth-child(4){animation-delay:.51s}.hero .hero-copy > *:nth-child(5){animation-delay:.63s}
 html.ro-motion-ready main section:not(.hero),html.ro-motion-ready .shop-header,html.ro-motion-ready .catalog-bar,html.ro-motion-ready .cart-page > *,html.ro-motion-ready .checkout-page > *,html.ro-motion-ready .contact-page > *,html.ro-motion-ready .about-page > *,html.ro-motion-ready .coaching-page > * { opacity:0; transform:translateY(80px) scale(.97); transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); }
 html.ro-motion-ready .ro-visible { opacity:1 !important; transform:none !important; }
-
-/* Mobile safety layer: never leave page content hidden behind a reveal state. */
-@media (max-width: 768px) {
-  html.ro-motion-ready main section:not(.hero),
-  html.ro-motion-ready .shop-header,
-  html.ro-motion-ready .catalog-bar,
-  html.ro-motion-ready .cart-page > *,
-  html.ro-motion-ready .checkout-page > *,
-  html.ro-motion-ready .contact-page > *,
-  html.ro-motion-ready .about-page > *,
-  html.ro-motion-ready .coaching-page > * {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-  }
-  .hero .hero-image { filter: none !important; }
-}

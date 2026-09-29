@@ -1,6 +1,51 @@
 (() => {
   'use strict';
-  if (!window.gsap) return;
+  if (!window.gsap) {
+    // Guaranteed fallback: if the GSAP CDN is blocked or slow, keep the same
+    // entrance/scroll experience using the browser Web Animations API.
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    const q = (s, root = document) => Array.from(root.querySelectorAll(s));
+    const animate = (el, frames, options) => {
+      if (!el || !el.animate) return;
+      el.animate(frames, { fill: 'both', ...options });
+    };
+    const reveal = (el, i = 0) => animate(el, [
+      { opacity: 0, transform: `translate3d(${i % 2 ? 70 : -70}px,90px,0) scale(.94) rotate(${i % 2 ? 1.5 : -1.5}deg)`, filter: 'blur(8px)' },
+      { opacity: 1, transform: 'translate3d(0,0,0) scale(1) rotate(0deg)', filter: 'blur(0)' }
+    ], { duration: 950, delay: Math.min(i * 70, 350), easing: 'cubic-bezier(.16,1,.3,1)' });
+
+    const header = document.querySelector('.site-header');
+    const announcement = document.querySelector('.announcement');
+    animate(announcement, [{opacity:0,transform:'translateY(-45px)'},{opacity:1,transform:'translateY(0)'}], {duration:550,easing:'cubic-bezier(.16,1,.3,1)'});
+    animate(header, [{opacity:0,transform:'translateY(-80px)'},{opacity:1,transform:'translateY(0)'}], {duration:800,delay:100,easing:'cubic-bezier(.16,1,.3,1)'});
+
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      const image = hero.querySelector('.hero-image');
+      animate(image, [{opacity:.45,transform:'scale(1.3)',filter:'blur(10px)'},{opacity:1,transform:'scale(1)',filter:'blur(0)'}], {duration:1500,easing:'cubic-bezier(.16,1,.3,1)'});
+      q('.hero-copy > *', hero).forEach((el,i)=>animate(el,[{opacity:0,transform:'translateY(95px) rotateX(-18deg)'},{opacity:1,transform:'translateY(0) rotateX(0)'}],{duration:850,delay:300+i*120,easing:'cubic-bezier(.34,1.56,.64,1)'}));
+      animate(hero.querySelector('.hero-bottom'),[{opacity:0,transform:'translateY(50px)'},{opacity:1,transform:'translateY(0)'}],{duration:700,delay:900,easing:'cubic-bezier(.16,1,.3,1)'});
+    } else {
+      const first = document.querySelector('main > *');
+      reveal(first, 0);
+    }
+
+    const targets = q('main section:not(.hero), .shop-header, .catalog-bar, .cart-page > *, .checkout-page > *, .contact-page > *, .about-page > *, .coaching-page > *');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || entry.target.dataset.motionDone) return;
+        entry.target.dataset.motionDone = '1';
+        reveal(entry.target, targets.indexOf(entry.target));
+        if (entry.target.classList.contains('equipment') || entry.target.querySelector('.product-grid')) {
+          q('.product', entry.target).forEach((card,i)=>animate(card,[{opacity:0,transform:'translateY(110px) scale(.84) rotateY(10deg)'},{opacity:1,transform:'translateY(0) scale(1) rotateY(0)'}],{duration:850,delay:120+i*90,easing:'cubic-bezier(.34,1.56,.64,1)'}));
+        }
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -5% 0px' });
+    targets.forEach(el=>observer.observe(el));
+    return;
+  }
 
   const gsap = window.gsap;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

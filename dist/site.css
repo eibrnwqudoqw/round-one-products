@@ -379,3 +379,12 @@
     transition: none;
   }
 }
+
+/* GSAP enhancement layer: motion is progressive and never required for navigation/checkout. */
+.product { will-change: transform; }
+.product-visual { overflow: hidden; }
+.product-visual img { will-change: transform; transform-origin: center center; }
+.button, .card-add-button, .filter { will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .product, .product-visual img, .button, .card-add-button, .filter { will-change: auto; }
+}

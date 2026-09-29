@@ -406,9 +406,9 @@
     "category": "gloves",
     "brand": "Punch Equipment",
     "sku": "PBG5GB16",
-    "price": "$0.99 AUD",
-    "priceCents": 99,
-    "stripePriceId": "price_1TwiCVDu2JWGBmWllBGzkdHf",
+    "price": "$139.99 AUD",
+    "priceCents": 13999,
+    "stripePriceId": "price_1UKvQzDu2JWGBmWla0e1uKn0",
     "description": [
       "The Trophy Getter® Boxing Gloves have earned their legendary reputation through more than 35 years of proven performance, making them a trusted choice for gyms, coaches, professional fighters and beginners alike.",
       "Designed for bag work, pad work, sparring and boxing drills, these premium leather gloves deliver outstanding comfort, durability and protection through every stage of your training.",
@@ -576,6 +576,7 @@
       "images/gloves7/8.png",
       "images/gloves7/11.png",
       "images/gloves7/16.png",
+      "images/gloves7/20.png",
       "images/gloves7/6.png",
       "images/gloves7/7.png",
       "images/gloves7/9.png",
@@ -671,8 +672,8 @@
         "label": "Cyan · 12oz",
         "colour": "Cyan",
         "size": "12oz",
-        "image": null,
-        "available": false,
+        "image": "images/gloves7/20.png",
+        "available": true,
         "stock": null
       }
     ],
@@ -680,9 +681,7 @@
     "testOnly": false,
     "stock": null,
     "sourceUrl": "https://www.punchequipment.com/collections/boxing-gloves/products/boxing-gloves-trophy-getters%C2%AE-12oz",
-    "missingImages": [
-      "Cyan · 12oz"
-    ]
+    "missingImages": []
   },
   "gloves8": {
     "id": "gloves8",
@@ -844,16 +843,21 @@
       "Available in six different weights and a wide range of colours, these gloves are engineered for athletes training between one and five times per week and are backed by a 2-year recreational and commercial warranty.",
       "Features premium leather construction, Punchtex® sweat-proof palms, handmade vacuum-fit design, crush-tested 3-tonne memory injected moulded padding, 3-inch full-wrap hook and loop wrist closure, available in 8oz, 10oz, 12oz, 14oz, 16oz and 18oz, multiple colour options, commercial-grade durability, and over 35 years of proven boxing innovation."
     ],
-    "image": null,
-    "gallery": [],
+    "image": "images/gloves11/1.png",
+    "gallery": [
+      "images/gloves11/1.png",
+      "images/gloves11/2.png",
+      "images/gloves11/3.png",
+      "images/gloves11/4.png"
+    ],
     "variants": [
       {
         "id": "black-10oz",
         "label": "Black · 10oz",
         "colour": "Black",
         "size": "10oz",
-        "image": null,
-        "available": false,
+        "image": "images/gloves11/1.png",
+        "available": true,
         "stock": null
       },
       {
@@ -861,8 +865,8 @@
         "label": "Blue · 10oz",
         "colour": "Blue",
         "size": "10oz",
-        "image": null,
-        "available": false,
+        "image": "images/gloves11/2.png",
+        "available": true,
         "stock": null
       },
       {
@@ -870,8 +874,8 @@
         "label": "Pink · 10oz",
         "colour": "Pink",
         "size": "10oz",
-        "image": null,
-        "available": false,
+        "image": "images/gloves11/3.png",
+        "available": true,
         "stock": null
       },
       {
@@ -879,21 +883,16 @@
         "label": "Red · 10oz",
         "colour": "Red",
         "size": "10oz",
-        "image": null,
-        "available": false,
+        "image": "images/gloves11/4.png",
+        "available": true,
         "stock": null
       }
     ],
-    "available": false,
+    "available": true,
     "testOnly": false,
     "stock": null,
     "sourceUrl": "https://www.punchequipment.com/collections/boxing-gloves/products/boxing-gloves-trophy-getters%C2%AE-10oz",
-    "missingImages": [
-      "Black · 10oz",
-      "Blue · 10oz",
-      "Pink · 10oz",
-      "Red · 10oz"
-    ]
+    "missingImages": []
   },
   "pads1": {
     "id": "pads1",
@@ -986,104 +985,6 @@
     "testOnly": false,
     "stock": null,
     "sourceUrl": "https://www.punchequipment.com/products/mexican-fuerte-pocket-rocket-focus-pads?variant=46229583626536",
-    "missingImages": []
-  },
-  "glovestest": {
-    "id": "glovestest",
-    "name": "BOXING GLOVES - Trophy Getters - 16oz",
-    "category": "gloves",
-    "brand": "Punch Equipment",
-    "sku": "PBG5GB16",
-    "price": "$0.01 AUD",
-    "priceCents": 1,
-    "stripePriceId": "price_1Tx4Z7Du2JWGBmWlb2E5Cng8",
-    "description": [
-      "The Trophy Getter® Boxing Gloves have earned their legendary reputation through more than 35 years of proven performance, making them a trusted choice for gyms, coaches, professional fighters and beginners alike.",
-      "Designed for bag work, pad work, sparring and boxing drills, these premium leather gloves deliver outstanding comfort, durability and protection through every stage of your training.",
-      "Featuring Punchtex® sweat-proof palms, vacuum-fit handmade construction and crush-tested 3-tonne memory injected moulded padding, they provide exceptional shock absorption, a secure fit and long-lasting performance.",
-      "The 3-inch full-wrap hook and loop wrist strap offers excellent wrist support, while the fitness-to-commercial grade construction is built to withstand years of regular use in both home and commercial gyms.",
-      "Available in six different weights and a wide range of colours, these gloves are engineered for athletes training between one and five times per week and are backed by a 2-year recreational and commercial warranty.",
-      "Features premium leather construction, Punchtex® sweat-proof palms, handmade vacuum-fit design, crush-tested 3-tonne memory injected moulded padding, 3-inch full-wrap hook and loop wrist closure, available in 8oz, 10oz, 12oz, 14oz, 16oz and 18oz, multiple colour options, commercial-grade durability, and over 35 years of proven boxing innovation."
-    ],
-    "image": "images/gloves5/1.png",
-    "gallery": [
-      "images/gloves5/1.png",
-      "images/gloves5/2.png",
-      "images/gloves5/3.png",
-      "images/gloves5/4.png",
-      "images/gloves5/5.png",
-      "images/gloves5/6.png",
-      "images/gloves5/8.png"
-    ],
-    "variants": [
-      {
-        "id": "black-16oz",
-        "label": "Black · 16oz",
-        "colour": "Black",
-        "size": "16oz",
-        "image": "images/gloves5/1.png",
-        "available": true,
-        "stock": null
-      },
-      {
-        "id": "white-16oz",
-        "label": "White · 16oz",
-        "colour": "White",
-        "size": "16oz",
-        "image": "images/gloves5/2.png",
-        "available": true,
-        "stock": null
-      },
-      {
-        "id": "blue-16oz",
-        "label": "Blue · 16oz",
-        "colour": "Blue",
-        "size": "16oz",
-        "image": "images/gloves5/3.png",
-        "available": true,
-        "stock": null
-      },
-      {
-        "id": "red-16oz",
-        "label": "Red · 16oz",
-        "colour": "Red",
-        "size": "16oz",
-        "image": "images/gloves5/4.png",
-        "available": true,
-        "stock": null
-      },
-      {
-        "id": "green-16oz",
-        "label": "Green · 16oz",
-        "colour": "Green",
-        "size": "16oz",
-        "image": "images/gloves5/5.png",
-        "available": true,
-        "stock": null
-      },
-      {
-        "id": "yellow-16oz",
-        "label": "Yellow · 16oz",
-        "colour": "Yellow",
-        "size": "16oz",
-        "image": "images/gloves5/6.png",
-        "available": true,
-        "stock": null
-      },
-      {
-        "id": "gold-16oz",
-        "label": "Gold · 16oz",
-        "colour": "Gold",
-        "size": "16oz",
-        "image": "images/gloves5/8.png",
-        "available": true,
-        "stock": null
-      }
-    ],
-    "available": true,
-    "testOnly": true,
-    "stock": null,
-    "sourceUrl": "https://www.punchequipment.com/collections/boxing-gloves/products/trophy-getters-commercial-boxing-gloves",
     "missingImages": []
   }
 }

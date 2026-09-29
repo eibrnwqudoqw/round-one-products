@@ -1,10 +1,15 @@
+document.documentElement.classList.add('ro-motion-ready');
+window.addEventListener('DOMContentLoaded', () => {
+  const targets = document.querySelectorAll('main section:not(.hero), .shop-header, .catalog-bar, .cart-page > *, .checkout-page > *, .contact-page > *, .about-page > *, .coaching-page > *');
+  const io = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('ro-visible'); io.unobserve(entry.target); } }), {threshold: .08, rootMargin: '0px 0px -8% 0px'});
+  targets.forEach(el => io.observe(el));
+});
 (() => {
   'use strict';
   if (!window.gsap) {
     // Guaranteed fallback: if the GSAP CDN is blocked or slow, keep the same
     // entrance/scroll experience using the browser Web Animations API.
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
+    const reduced = false; // Animations intentionally enabled for this site build.
     const q = (s, root = document) => Array.from(root.querySelectorAll(s));
     const animate = (el, frames, options) => {
       if (!el || !el.animate) return;
@@ -48,8 +53,7 @@
   }
 
   const gsap = window.gsap;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return;
+  const reduced = false; // Animations intentionally enabled for this site build.
   if (window.ScrollTrigger) gsap.registerPlugin(window.ScrollTrigger);
 
   const q = (s, root = document) => Array.from(root.querySelectorAll(s));

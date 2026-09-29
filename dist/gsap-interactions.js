@@ -1,11 +1,73 @@
-document.documentElement.classList.add('ro-motion-ready');
-window.addEventListener('DOMContentLoaded', () => {
-  const targets = document.querySelectorAll('main section:not(.hero), .shop-header, .catalog-bar, .cart-page > *, .checkout-page > *, .contact-page > *, .about-page > *, .coaching-page > *');
-  const io = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('ro-visible'); io.unobserve(entry.target); } }), {threshold: .08, rootMargin: '0px 0px -8% 0px'});
-  targets.forEach(el => io.observe(el));
-});
 (() => {
   'use strict';
+
+  // Phones use a deliberately simpler motion path. It never pre-hides page
+  // content, uses no blur/3D/parallax, and therefore cannot leave Shop or
+  // Contact dark/blank if an observer or third-party script is delayed.
+  const mobileMotion = window.matchMedia('(max-width: 768px)').matches ||
+    window.matchMedia('(pointer: coarse)').matches;
+
+  if (mobileMotion) {
+    const q = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+    const play = (el, keyframes, options) => {
+      if (!el || typeof el.animate !== 'function') return;
+      try { el.animate(keyframes, { fill: 'none', ...options }); } catch (_) {}
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Page-load motion: visible at all times, then a quick polished entrance.
+      play(document.querySelector('.announcement'),
+        [{ opacity: .35, transform: 'translateY(-20px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 420, easing: 'cubic-bezier(.16,1,.3,1)' });
+      play(document.querySelector('.site-header'),
+        [{ opacity: .25, transform: 'translateY(-30px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 560, delay: 50, easing: 'cubic-bezier(.16,1,.3,1)' });
+
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        play(hero.querySelector('.hero-image'),
+          [{ opacity: .55, transform: 'scale(1.08)' }, { opacity: 1, transform: 'scale(1)' }],
+          { duration: 850, easing: 'cubic-bezier(.16,1,.3,1)' });
+        q('.hero-copy > *', hero).forEach((el, i) => play(el,
+          [{ opacity: 0, transform: 'translateY(34px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 520, delay: 140 + i * 85, easing: 'cubic-bezier(.16,1,.3,1)' }));
+      } else {
+        const first = document.querySelector('main > *');
+        play(first,
+          [{ opacity: .2, transform: 'translateY(28px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 600, delay: 90, easing: 'cubic-bezier(.16,1,.3,1)' });
+      }
+
+      // Scroll reveals. Crucially, elements remain visible until the animation
+      // actually starts; there is no CSS opacity:0 waiting state on mobile.
+      const selector = [
+        'main section:not(.hero)', '.shop-header', '.catalog-bar',
+        '.cart-page > *', '.checkout-page > *', '.contact-page > *',
+        '.about-page > *', '.coaching-page > *'
+      ].join(',');
+      const targets = q(selector);
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting || entry.target.dataset.mobileMotionDone) return;
+            entry.target.dataset.mobileMotionDone = '1';
+            play(entry.target,
+              [{ opacity: .15, transform: 'translateY(38px)' }, { opacity: 1, transform: 'translateY(0)' }],
+              { duration: 560, easing: 'cubic-bezier(.16,1,.3,1)' });
+            const cards = q('.product', entry.target);
+            cards.forEach((card, i) => play(card,
+              [{ opacity: .1, transform: 'translateY(42px) scale(.97)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }],
+              { duration: 500, delay: Math.min(i * 55, 330), easing: 'cubic-bezier(.16,1,.3,1)' }));
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: .05, rootMargin: '0px 0px -4% 0px' });
+        targets.forEach((el) => observer.observe(el));
+      }
+    }, { once: true });
+    return;
+  }
+
+  document.documentElement.classList.add('ro-motion-ready');
   if (!window.gsap) {
     // Guaranteed fallback: if the GSAP CDN is blocked or slow, keep the same
     // entrance/scroll experience using the browser Web Animations API.

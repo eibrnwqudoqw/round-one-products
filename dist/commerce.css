@@ -94,6 +94,38 @@
   width: 100%;
   gap: 12px;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payment-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+.payment-brand-stripe {
+  background: #635bff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 6px 8px 7px;
+  font: 700 16px/1 Arial, sans-serif;
+  letter-spacing: -0.8px;
+  text-transform: lowercase;
+}
+.payment-brand-paypal {
+  gap: 4px;
+  font: 700 17px/1 Arial, sans-serif;
+  font-style: italic;
+}
+.paypal-p {
+  color: #003087;
+  font-size: 23px;
+  font-weight: 900;
+}
+.paypal-word {
+  color: #003087;
 }
 .payment-buttons button:disabled {
   opacity: 0.45;

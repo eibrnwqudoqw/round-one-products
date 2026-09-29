@@ -111,14 +111,16 @@
                 data-payment-provider="stripe"
                 disabled
               >
-                PAY BY CARD</button
+                <span class="payment-brand payment-brand-stripe" aria-hidden="true">stripe</span>
+                <span>PAY BY CARD</span></button
               ><button
                 type="button"
                 class="button paypal-button"
                 data-payment-provider="paypal"
                 disabled
               >
-                PAY WITH PAYPAL
+                <span class="payment-brand payment-brand-paypal" aria-hidden="true"><span class="paypal-p">P</span><span class="paypal-word">PayPal</span></span>
+                <span>PAY WITH PAYPAL</span>
               </button>
             </div>
             <p class="checkout-note" id="checkout-note">Online checkout is not open yet. Your items will stay saved in this browser.</p>

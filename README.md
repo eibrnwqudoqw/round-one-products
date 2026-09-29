@@ -2,9 +2,11 @@
 
 This is the complete Round One website with its existing black/yellow/gold design, updated to use the actual product repository. It is plain HTML, CSS and JavaScript with **Netlify Functions** for Stripe and PayPal and **Netlify Blobs** for private order/payment records.
 
-## Fresh complete export - 27 September 2026
+## Updated complete export - 29 September 2026
 
-This package matches saved website version 11 (source commit `c47416f32a7ca872a89a9d54f69c51351ad766bf`), including the homepage hero spacing fix and popup Contact and Personal Training enquiry forms. Read `START-HERE.md` for upload instructions. Runtime source, assets, product data and payment code are preserved; export documentation is updated.
+Based on the complete 27 September export of website version 11, with payment safeguards added for your Netlify migration. The homepage hero fix, popup enquiry forms, design, catalogue and images are preserved. Stripe and PayPal now require separate enablement and matching test/live settings. Existing deployments with no new switches keep checkout closed.
+
+Read `START-HERE.md` first and `docs/PAYMENT-SETUP.md` for the exact next steps. `docs/CHANGES.md` lists every changed file. This ZIP does not change Netlify settings, create payment credentials, push to GitHub or deploy the site.
 
 ## Start here
 
@@ -54,7 +56,8 @@ The build reads the root `products.json` and `images/`, creates the shared brows
 | `lib/http.mjs`                                            | Configuration, request validation and safe JSON responses.                                    |
 | `lib/payments.mjs`                                        | Server prices, provider sessions, capture, payment verification and order storage.            |
 | `netlify/functions/`                                      | Public server endpoints; secrets stay in their runtime environment.                           |
-| `.env.example`                                            | Blank environment-variable template. No real keys included.                                   |
+| `config/stripe-test-prices.json` | Separate test Stripe Price IDs by product ID; blank placeholders until you supply real test IDs. |
+| `.env.example`                                            | Environment template with free AU shipping, disabled payments and blank credentials.                                   |
 | `netlify.toml`                                            | Build, function bundling, publish folder and headers.                                         |
 | `tests/`                                                  | Catalogue, cart, payment and local-server checks.                                             |
 
@@ -64,7 +67,7 @@ All original descriptions are shown in the details dialog. Products with a colou
 
 ## Netlify deployment
 
-Import the **complete project**, not only the catalogue repository and not just `dist`, into your own website repository. The catalogue-only repository does not contain the website or functions. If it is nested in another repository, set Netlify's base directory to the folder containing `package.json` and `netlify.toml`.
+Upload the **complete project** to your existing website repository, not just `dist`. Your repository must include the website, functions and configuration files together. If it is nested in another repository, set Netlify's base directory to the folder containing `package.json` and `netlify.toml`.
 
 Netlify settings:
 
@@ -75,41 +78,34 @@ Netlify settings:
 
 Use a Git-connected Netlify deployment so functions and their dependencies are bundled. Uploading only `dist` serves the shop but omits payments. Each page has its own `index.html`; no single-page-app catch-all rewrite is needed.
 
-In Netlify's environment settings, create the variables in `.env.example`, with the **Functions** scope. Keep keys out of browser code, products.json, Git, screenshots and chat. Redeploy after changes. Your old Astra hosting access restrictions do not migrate; set access on the new host if needed.
+In Netlify's environment settings, create the variables in `.env.example`, with **All scopes**, or **Functions** if your plan supports specific scopes. Keep keys out of browser code, products.json, Git, screenshots and chat. Redeploy after changes. Your old Astra hosting access restrictions do not migrate; set access on the new host if needed.
 
-### Shared payment settings
+### Payment setup
 
-| Variable             | What to enter                                                                                                                     |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `SITE_URL`           | Your actual HTTPS site origin, e.g. `https://your-site.netlify.app`. Used to create trusted return URLs and check request origin. |
-| `PAYMENTS_ENABLED`   | Keep `false` during setup. Set `true` after catalogue, shipping and provider setup are verified.                                  |
-| `SHIPPING_CENTS`     | Your actual flat shipping charge in AUD cents. Must be supplied. `0` explicitly means free shipping.                              |
-| `SHIPPING_COUNTRIES` | Comma-separated country codes you actually ship to, e.g. `AU`. No default destination is invented.                                |
+See `docs/PAYMENT-SETUP.md` for the complete PayPal-only sandbox, Stripe test and live-launch instructions.
 
-This implementation supports one flat shipping charge per order, displayed before payment. If you need weight-based, postcode-based or carrier-calculated shipping, implement those rules before opening sales. Prices remain the supplied amounts and no additional tax is automatically applied. Confirm how your product prices should account for tax before selling.
+| Variable | Purpose |
+| --- | --- |
+| `SITE_URL` | Actual public HTTPS origin, without a path. The template uses your Round One Netlify address; update it for a separate test project or a new domain. |
+| `PAYMENTS_ENABLED` | Master switch. Keep `false` during setup. |
+| `PAYMENT_MODE` | `test` (default) or `live`. Invalid modes disable checkout. |
+| `STRIPE_ENABLED` | `true` to permit new Stripe sessions; defaults to `false`. |
+| `PAYPAL_ENABLED` | `true` to permit new PayPal orders; defaults to `false`. |
+| `SHIPPING_CENTS` | `0`, your confirmed free delivery policy. |
+| `SHIPPING_COUNTRIES` | `AU`, your confirmed Australia-only delivery policy. |
+| `STRIPE_SECRET_KEY` | Matching Stripe account/mode key, entered only in Netlify. |
+| `STRIPE_WEBHOOK_SECRET` | Signing secret for that mode's webhook endpoint. |
+| `PAYPAL_ENV` | `sandbox` for test mode; `live` for live mode. |
+| `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` | Credentials from the same PayPal REST app/environment. |
+| `PAYPAL_WEBHOOK_ID` | Webhook ID registered in that same app/environment. |
 
-### Stripe setup
+A provider only opens when its own switch, the master switch, credentials, mode, origin and shipping settings are valid. Stripe keys are checked for test/live prefixes. PayPal's environment must match `PAYMENT_MODE`; its API validates the supplied app credentials. The server still validates provider totals and signatures. The switch checks do not establish credential validity or webhook delivery; real sandbox verification is required.
 
-1. Set `STRIPE_SECRET_KEY` for the Stripe account and mode that own the existing Price IDs. There is no need for a browser publishable key with this hosted Checkout flow.
-2. Create a webhook endpoint in that Stripe account pointing to:
-   `https://YOUR-SITE/.netlify/functions/stripe-webhook`
-3. Subscribe to `checkout.session.completed` and `checkout.session.async_payment_succeeded`.
-4. Store the endpoint signing secret in `STRIPE_WEBHOOK_SECRET`.
-5. Verify with Stripe test mode before real charges. Existing live Price IDs cannot be used with test-mode credentials; use a separate test copy with real test Price IDs if needed. The provided IDs are preserved unchanged.
+Stripe test mode reads only `config/stripe-test-prices.json` for the selected product's test Price ID. Blank or invalid test mappings stop checkout. Live mode uses the original IDs in `products.json`. The server verifies price mode, active status, one-time/per-unit pricing, AUD and exact amount before creating the hosted checkout. No publishable key is needed for this implementation.
 
-The function retrieves the supplied Price ID and verifies active status, one-time/per-unit pricing, AUD currency and the exact amount. It then creates a real hosted session using that existing ID. Inaccessible IDs or mismatches stop checkout. Product keys, colours and sizes are stored in the order snapshot and Stripe metadata.
+PayPal uses server-validated catalogue amounts and does not require the Stripe test-price map. Both providers use the original product names, selected variants and quantities. Disabling a provider switch stops new orders; already-created sessions can still be reconciled while matching credentials remain configured. Changing mode/credentials mid-checkout can prevent reconciliation, so finish test orders before switching settings.
 
-### PayPal setup
-
-1. Create/select a PayPal REST app and set `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` in Netlify.
-2. Set `PAYPAL_ENV=sandbox` during testing; use `live` only with matching live credentials.
-3. Add an app webhook pointing to:
-   `https://YOUR-SITE/.netlify/functions/paypal-webhook`
-4. Subscribe to `PAYMENT.CAPTURE.COMPLETED` and store its ID in `PAYPAL_WEBHOOK_ID`.
-
-PayPal opens its hosted approval page. The server creates the order using the trusted catalogue prices and selected colour/size. After the customer approves and returns, the server validates the stored order, amount and shipping destination before capture. It never trusts a browser-supplied amount or PayPal order ID. PayPal does not use Stripe Price IDs; both providers use the same source amounts.
-
-Stripe and PayPal can be configured independently. Unconfigured provider buttons stay disabled. No payment keys are loaded into the browser.
+One flat shipping charge applies per order. No tax engine, postcode-based rates or carrier quotes are added. Confirm your product prices' tax treatment before selling.
 
 ## Order confirmation, records and fulfilment
 

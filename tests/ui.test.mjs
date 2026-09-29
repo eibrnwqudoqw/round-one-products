@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 const root = fileURLToPath(new URL('../dist/', import.meta.url));
-async function page(route, stored) {
+async function page(route, stored, settings = { stripe: false, paypal: false, shippingCents: 1200, countries: ['AU'] }) {
   const dom = new JSDOM(fs.readFileSync(path.join(root, route, 'index.html'), 'utf8'), {
     url: 'https://roundone.example/' + route + '/',
     runScripts: 'outside-only',
@@ -21,7 +21,7 @@ async function page(route, stored) {
   };
   w.fetch = async () => ({
     ok: true,
-    json: async () => ({ stripe: false, paypal: false, shippingCents: 1200, countries: ['AU'] }),
+    json: async () => settings,
   });
   if (stored) w.localStorage.setItem('round-one-cart-v1', stored);
   for (const script of w.document.querySelectorAll('script[src]'))
@@ -87,4 +87,22 @@ test('Shop filters, variant photo changes, details, missing images, cart persist
   } finally {
     w.close();
   }
+});
+test('PayPal-only test checkout displays free AU shipping, test notice and the correct button states', async () => {
+  const shop = await page('shop');
+  shop.window.document.querySelector('[data-add-product="gloves7"]').click();
+  const stored = shop.window.localStorage.getItem('round-one-cart-v1');
+  shop.window.close();
+  const cart = await page('cart', stored, {
+    stripe: false, paypal: true, paymentMode: 'test', shippingCents: 0, countries: ['AU'],
+  });
+  try {
+    const d = cart.window.document;
+    assert.equal(d.querySelector('[data-payment-provider="stripe"]').disabled, true);
+    assert.equal(d.querySelector('[data-payment-provider="paypal"]').disabled, false);
+    assert.match(d.querySelector('#checkout-note').textContent, /TEST CHECKOUT/);
+    assert.match(d.querySelector('#cart-shipping').textContent, /0\.00/);
+    assert.match(d.querySelector('#cart-total').textContent, /139\.99/);
+    assert.match(d.querySelector('.summary-currency').textContent, /AU/);
+  } finally { cart.window.close(); }
 });

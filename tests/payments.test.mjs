@@ -7,15 +7,19 @@ import { config, readBody } from '../lib/http.mjs';
 const env = {
   SITE_URL: 'https://roundone.example',
   PAYMENTS_ENABLED: 'true',
+  PAYMENT_MODE: 'test',
+  STRIPE_ENABLED: 'true',
+  PAYPAL_ENABLED: 'true',
   SHIPPING_CENTS: '1200',
   SHIPPING_COUNTRIES: 'AU',
-  STRIPE_SECRET_KEY: 'test-not-a-real-key',
+  STRIPE_SECRET_KEY: 'sk_test_dummy' ,
   STRIPE_WEBHOOK_SECRET: 'test-webhook-secret',
   PAYPAL_CLIENT_ID: 'test-client',
   PAYPAL_CLIENT_SECRET: 'test-secret',
   PAYPAL_WEBHOOK_ID: 'test-webhook-id',
   PAYPAL_ENV: 'sandbox',
 };
+const stripeTestPrices = { gloves7: 'price_testgloves7' };
 const token = 'ab'.repeat(32);
 const items = [{ productId: 'gloves7', variantId: 'red-12oz', quantity: 2 }];
 const body = (provider = 'stripe') => ({
@@ -36,7 +40,7 @@ function storage() {
     },
   };
 }
-function stripeMock() {
+function stripeMock(livemode = false) {
   let created = 0;
   let session;
   let input;
@@ -55,6 +59,7 @@ function stripeMock() {
       retrieve: async (id) => ({
         id,
         active: true,
+        livemode,
         type: 'one_time',
         currency: 'aud',
         unit_amount: 13999,
@@ -94,6 +99,69 @@ test('Payment config fails closed without credentials, shipping and explicit ena
   assert.equal(config({ ...env, PAYMENTS_ENABLED: 'false' }).paypal, false);
   assert.equal(config(env).stripe, true);
 });
+test('Providers require independent enablement and credentials matching test/live mode', () => {
+  const paypalOnly = { ...env, STRIPE_ENABLED: 'false', STRIPE_SECRET_KEY: 'sk_live_dummy' };
+  assert.equal(config(paypalOnly).paypal, true);
+  assert.equal(config(paypalOnly).stripe, false);
+  assert.equal(config({ ...paypalOnly, STRIPE_ENABLED: 'true' }).stripe, false);
+  assert.equal(config({ ...env, STRIPE_ENABLED: undefined }).stripe, false);
+  assert.equal(config({ ...env, PAYPAL_ENABLED: undefined }).paypal, false);
+  assert.equal(config({ ...env, PAYPAL_ENV: 'live' }).paypal, false);
+  assert.equal(config({ ...env, PAYMENT_MODE: 'live' }).stripe, false);
+  assert.equal(config({ ...env, PAYMENT_MODE: 'live' }).paypal, false);
+  assert.equal(config({ ...env, PAYMENT_MODE: 'typo' }).enabled, false);
+  assert.equal(config({ ...env, STRIPE_SECRET_KEY: 'invalid' }).stripe, false);
+  assert.equal(config({ ...env, PAYMENT_MODE: 'live', STRIPE_SECRET_KEY: 'sk_live_dummy' }).stripe, true);
+  assert.equal(config({ ...env, PAYMENT_MODE: 'live', PAYPAL_ENV: 'live' }).paypal, true);
+  assert.equal(config({ ...env, SHIPPING_CENTS: '0' }).shippingCents, 0);
+});
+test('Disabled or mismatched providers cannot create orders or contact payment APIs', async () => {
+  for (const patch of [
+    { STRIPE_ENABLED: 'false' },
+    { STRIPE_SECRET_KEY: 'sk_live_dummy' },
+    { PAYMENT_MODE: 'live' },
+    { PAYMENTS_ENABLED: 'false' },
+  ]) {
+    const store = storage(), stripe = stripeMock();
+    const service = createCommerce({ env: { ...env, ...patch }, store, stripe, stripeTestPrices });
+    await assert.rejects(service.create(body()), /not configured/);
+    assert.equal(stripe.created, 0);
+    assert.equal(store.values.size, 0);
+  }
+  const api = paypalMock(), store = storage();
+  const service = createCommerce({ env: { ...env, PAYPAL_ENV: 'live' }, store, fetchImpl: api.request });
+  await assert.rejects(service.create(body('paypal')), /not configured/);
+  assert.equal(api.createCount, 0);
+  assert.equal(store.values.size, 0);
+});
+test('Missing or invalid Stripe test mappings never fall back to original catalogue IDs', async () => {
+  for (const map of [{}, { gloves7: '' }, { gloves7: 'not-a-price' }]) {
+    const stripe = stripeMock(), store = storage();
+    const service = createCommerce({ env, stripe, store, stripeTestPrices: map });
+    await assert.rejects(service.create(body()), /test price is not configured/);
+    assert.equal(stripe.created, 0);
+    assert.equal(store.values.size, 0);
+  }
+});
+test('Live checkout preserves original catalogue Price IDs and rejects the wrong price mode', async () => {
+  const liveEnv = { ...env, PAYMENT_MODE: 'live', STRIPE_SECRET_KEY: 'sk_live_dummy' };
+  const stripe = stripeMock(true);
+  const service = createCommerce({ env: liveEnv, store: storage(), stripe, stripeTestPrices });
+  await service.create(body());
+  assert.equal(stripe.input.line_items[0].price, validateCart(items)[0].stripePriceId);
+  const wrongMode = createCommerce({ env: liveEnv, store: storage(), stripe: stripeMock(false) });
+  await assert.rejects(wrongMode.create(body()), /does not match/);
+});
+test('PayPal sandbox can open with Stripe disabled, a live Stripe key and no test price map', async () => {
+  const api = paypalMock();
+  const service = createCommerce({
+    env: { ...env, STRIPE_ENABLED: 'false', STRIPE_SECRET_KEY: 'sk_live_dummy' },
+    store: storage(), fetchImpl: api.request, stripeTestPrices: {},
+  });
+  const session = await service.create(body('paypal'));
+  assert.match(session.checkoutUrl, /^https:\/\/www\.sandbox\.paypal\.com\//);
+  assert.equal(api.createCount, 1);
+});
 test('Server rejects unknown IDs, missing images, test entries and invalid quantities; ignores client prices', () => {
   assert.equal(
     validateCart([{ ...items[0], priceCents: 1, stripePriceId: 'price_forged' }])[0].unitCents,
@@ -130,16 +198,16 @@ test('Stripe live catalogue mismatch stops checkout', () => {
   ])
     assert.throws(() => checkStripePrice({ ...price, ...patch }, line));
 });
-test('Stripe uses existing Price IDs and variants, retries once, and verifies payment before recording', async () => {
+test('Stripe uses separate test Price IDs and variants, retries once, and verifies payment before recording', async () => {
   const store = storage(),
     stripe = stripeMock(),
-    service = createCommerce({ env, store, stripe });
+    service = createCommerce({ env, store, stripe, stripeTestPrices });
   const request = body();
   const first = await service.create(request);
   const second = await service.create(request);
   assert.equal(first.checkoutUrl, second.checkoutUrl);
   assert.equal(stripe.created, 1);
-  assert.equal(stripe.input.line_items[0].price, validateCart(items)[0].stripePriceId);
+  assert.equal(stripe.input.line_items[0].price, stripeTestPrices.gloves7);
   assert.match(stripe.input.metadata.item_1, /red-12oz/);
   assert.equal(stripe.input.shipping_options[0].shipping_rate_data.fixed_amount.amount, 1200);
   const check = { orderId: request.attemptId, checkoutToken: token };
@@ -161,7 +229,7 @@ test('Stripe uses existing Price IDs and variants, retries once, and verifies pa
 test('Stripe webhook validates real SDK signatures and does not accept forged events', async () => {
   const store = storage(),
     stripe = stripeMock(),
-    service = createCommerce({ env, store, stripe });
+    service = createCommerce({ env, store, stripe, stripeTestPrices });
   const request = body();
   await service.create(request);
   stripe.paid = true;

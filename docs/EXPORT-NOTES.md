@@ -1,20 +1,11 @@
-# Fresh portable source export
+# Updated portable source export
 
-Prepared 27 September 2026 from saved Round One website version 11.
-Website source commit: `c47416f32a7ca872a89a9d54f69c51351ad766bf`.
+Prepared 29 September 2026 from the complete 27 September export of Round One website version 11, source commit c47416f32a7ca872a89a9d54f69c51351ad766bf, with the payment setup changes listed in CHANGES.md.
 
-The latest saved version and its source commit were checked against Sites metadata before this export. All tracked project files are included except `.openai/hosting.json`, which only identifies the original ChatGPT hosting project and is not needed by Netlify. Git history, installed node_modules, local credentials and hosting caches are intentionally not included. Dependencies install from package-lock.json with npm ci.
+This update is a portable download. It has not been pushed to GitHub, published to Netlify or applied to the original ChatGPT-hosted site. Netlify environment variables, payment credentials and provider webhooks must be configured separately. The attempted account sign-in on 28 September did not result in any confirmed account changes.
 
-The runtime source and public assets preserve the latest website. The export adds START-HERE.md and EXPORT-MANIFEST.json and updates documentation to describe the current popup forms and verification. No website redesign, product corrections or new integrations were performed during export.
+All original product data, HTML, CSS and assets are retained byte-for-byte from the previous complete export. The original products.json and images folder came from the supplied GitHub catalogue at commit b349c5f2d66475668639f137786c8cf7734335b7. No claim is made that the external repository has no newer owner edits; compare them before replacing files. There are 20 catalogue entries including one blocked test item, 100 photographs and five missing photo mappings. See CATALOGUE-AUDIT.md.
 
-## Catalogue provenance
+The export includes the human-readable website, popup forms, cart, payment functions, configuration, dependency lockfile, tests and editing/deployment documentation. Git history, installed node_modules, credentials and original host-specific .openai metadata are excluded. Install dependencies with npm ci. The manifest lists every archived file except itself.
 
-The original products.json and images/ folder come from https://github.com/eibrnwqudoqw/round-one-products at commit `b349c5f2d66475668639f137786c8cf7734335b7`. Their source values and image paths are preserved. There are 20 catalogue entries, including one non-purchasable test entry, and 100 supplied product photographs. Five referenced photographs were already missing from that repository. Affected variants remain unavailable. See CATALOGUE-AUDIT.md.
-
-Rebuilding creates browser catalogue data, public image copies and server catalogue data from the root data and images. Product images are not downloaded from GitHub at runtime. The source catalogue snapshot is not a claim that the external product repository has no newer changes.
-
-## Independence and remaining services
-
-This source does not depend on Astra/ChatGPT to run on Netlify. Netlify Forms handles enquiries after deployment and form detection; Netlify Functions and Blobs run the payment backend and private order storage. Stripe and PayPal accounts, environment settings and webhooks must be configured. Google Fonts is an external font dependency, documented in FONTS-AND-ASSETS.md. Training scheduling, branded order emails, inventory reservation and dispatch automation are not implemented. No private address or new credentials are added by this export.
-
-This operation only creates a download. It does not upload to your GitHub repository, deploy to Netlify, change payment accounts or modify the existing hosted website. The contents of round-one-boxing should be at your website repository root, or Netlify must use that folder as its base directory.
+This source runs independently of the ChatGPT website editor. Netlify provides Forms, Functions and Blobs after deployment. Stripe and PayPal provide hosted payments after account configuration. Google Fonts remains an external typography dependency. Scheduling, automatic order emails, inventory reservation and dispatch automation remain unimplemented. No missing business details or catalogue assets have been fabricated.

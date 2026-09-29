@@ -5,6 +5,7 @@ export default async (request) => {
   return json({
     stripe: c.stripe,
     paypal: c.paypal,
+    paymentMode: c.paymentMode,
     paypalHost: c.paypalHost,
     currency: c.currency,
     shippingCents: c.shippingCents,

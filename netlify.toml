@@ -6,7 +6,7 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  included_files = ["products.json", "lib/catalogue-data.json", "lib/image-manifest.json"]
+  included_files = ["products.json", "lib/catalogue-data.json", "lib/image-manifest.json", "config/stripe-test-prices.json"]
 # Each route has its own index.html. Do not add a SPA catch-all.
 [[headers]]
   for = "/*"

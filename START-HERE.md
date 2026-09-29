@@ -1,6 +1,6 @@
 # Round One - start here
 
-Fresh complete website source, exported 27 September 2026.
+Fresh complete website source, updated 29 September 2026 with separate payment switches and test/live safeguards.
 Includes the latest homepage hero fix, popup Contact and Personal Training forms, product catalogue, saved shopping cart, Stripe/PayPal server source and Netlify configuration.
 
 ## 1. Extract the ZIP
@@ -31,7 +31,7 @@ Uploading only dist is not enough for payments. Use the full Git-connected proje
 
 ## 4. Configure services when ready
 
-Payments: set the variables listed in .env.example securely in Netlify, with Functions scope. Keep PAYMENTS_ENABLED=false until catalogue, shipping and provider settings are ready. Follow the Stripe and PayPal sections in README.md. Test using isolated test/sandbox accounts before switching to live. Do not send API keys in chat.
+Payments: read docs/PAYMENT-SETUP.md. The three new settings are PAYMENT_MODE, STRIPE_ENABLED and PAYPAL_ENABLED. Missing switches keep payments disabled, even if you previously set PAYMENTS_ENABLED=true. Your existing Netlify variables are not updated by uploading this ZIP. The confirmed delivery values are SHIPPING_CENTS=0 and SHIPPING_COUNTRIES=AU. Start with a separate PayPal-only sandbox test deployment; real account tests are still required. Never put credentials into this ZIP or GitHub.
 
 Forms: enable Netlify form detection and redeploy. Confirm contact and personal-training-enquiry appear under Forms, then set your Gmail notification address in Netlify. No Gmail password is needed. Submit each form and verify both its Netlify entry and email notification. See docs/FORMS.md.
 

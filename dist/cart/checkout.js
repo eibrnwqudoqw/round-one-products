@@ -28,7 +28,9 @@
         ? 'Online checkout is not open yet. Your items will stay saved in this browser.'
         : !settings.stripe && !settings.paypal
           ? 'Payments are not open yet. Please check back soon.'
-          : 'Choose a payment method. Your order and selected colours are checked securely before payment.';
+          : settings.paymentMode === 'test'
+            ? 'TEST CHECKOUT — use sandbox accounts or Stripe test cards only. No real payment will be taken.'
+            : 'Choose a payment method. Your order and selected colours are checked securely before payment.';
   }
   async function checkout(provider) {
     if (busy) return;
@@ -36,7 +38,12 @@
     render();
     try {
       const items = cart.checkoutItems();
-      const signature = JSON.stringify({ provider, items, shippingCents: settings.shippingCents });
+      const signature = JSON.stringify({
+        provider,
+        paymentMode: settings.paymentMode,
+        items,
+        shippingCents: settings.shippingCents,
+      });
       let attempt;
       try {
         attempt = JSON.parse(sessionStorage.getItem(storageKey) || 'null');

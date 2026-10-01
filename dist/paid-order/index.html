@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Round One — order notification form</title>
+  </head>
+  <body>
+    <!-- Netlify scans this static schema on deployment. No visible form or client-side submission. -->
+    <form name="paid-order" method="POST" action="/paid-order/" data-netlify="true"
+      netlify-honeypot="bot-field" hidden aria-hidden="true">
+      <input type="hidden" name="form-name" value="paid-order" />
+      <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+      <textarea name="order_details"></textarea>
+      <textarea name="delivery_address"></textarea>
+      <textarea name="products"></textarea>
+      <input type="text" name="subject" />
+      <input type="text" name="order_id" />
+      <input type="text" name="payment_method" />
+      <input type="text" name="transaction_id" />
+      <input type="text" name="provider_order_id" />
+      <input type="text" name="payment_status" />
+      <input type="text" name="payment_environment" />
+      <input type="text" name="payment_verified_at" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="delivery_recipient" />
+      <input type="text" name="address_line_1" />
+      <input type="text" name="address_line_2" />
+      <input type="text" name="suburb_city" />
+      <input type="text" name="state" />
+      <input type="text" name="postcode" />
+      <input type="text" name="country" />
+      <input type="text" name="subtotal" />
+      <input type="text" name="shipping" />
+      <input type="text" name="total_paid" />
+      <input type="text" name="currency" />
+    </form>
+  </body>
+</html>

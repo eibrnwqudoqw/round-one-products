@@ -104,6 +104,14 @@
             <p class="summary-currency">
               AUD · Shipping and any additional charges have not yet been calculated.
             </p>
+            <div class="checkout-phone-field">
+              <label for="checkout-phone">Phone number <span>(required)</span></label>
+              <input id="checkout-phone" name="checkout-phone" type="tel" inputmode="tel"
+                autocomplete="tel" required maxlength="40" placeholder="0412 345 678"
+                aria-describedby="checkout-phone-help checkout-phone-error" />
+              <p id="checkout-phone-help">For questions about your order or delivery.</p>
+              <p id="checkout-phone-error" role="alert" hidden></p>
+            </div>
             <div class="payment-buttons">
               <button
                 type="button"

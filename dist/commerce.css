@@ -195,3 +195,25 @@
   .payment-logo-paypal { height: 25px; max-width: 108px; }
   .paypal-button { gap: 10px; }
 }
+
+/* Required checkout contact field only; existing page and enquiry styles are unchanged. */
+.checkout-phone-field { margin: 20px 0; }
+.checkout-phone-field label { display: block; font-size: 14px; margin-bottom: 8px; }
+.checkout-phone-field label span { color: var(--accent-soft); }
+.checkout-phone-field input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 13px 12px;
+  border: 1px solid #777;
+  border-radius: 0;
+  background: #151515;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+}
+.checkout-phone-field input:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+.checkout-phone-field input[aria-invalid='true'] { border-color: #f4bd70; }
+.checkout-phone-field p { margin: 8px 0 0; font-size: 13px; line-height: 1.5; }
+#checkout-phone-error { color: #f4bd70; }

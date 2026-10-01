@@ -6,6 +6,18 @@
   const buttons = [...document.querySelectorAll('[data-payment-provider]')];
   const note = document.querySelector('#checkout-note');
   const storageKey = 'round-one-checkout-attempt';
+  const phoneInput = document.querySelector('#checkout-phone');
+  const phoneError = document.querySelector('#checkout-phone-error');
+  const phoneValidator = import('/checkout-phone.mjs');
+  // Restore only this tab's checkout draft, never a public form or URL parameter.
+  try {
+    const draft = JSON.parse(sessionStorage.getItem(storageKey) || 'null');
+    if (draft?.customerPhone) phoneInput.value = draft.customerPhone;
+  } catch {}
+  phoneInput.addEventListener('input', () => {
+    phoneInput.removeAttribute('aria-invalid');
+    phoneError.hidden = true;
+  });
   function render() {
     const summary = cart.summary();
     buttons.forEach(
@@ -33,13 +45,29 @@
             : 'Choose a payment method. Your order and selected colours are checked securely before payment.';
   }
   async function checkout(provider) {
-    if (busy) return;
+    if (busy || !settings?.[provider]) return;
     busy = true;
     render();
     try {
+      let customerPhone;
+      try {
+        const { normalizeCheckoutPhone } = await phoneValidator;
+        customerPhone = normalizeCheckoutPhone(phoneInput.value);
+      } catch (error) {
+        phoneError.textContent = error.message;
+        phoneError.hidden = false;
+        phoneInput.setAttribute('aria-invalid', 'true');
+        phoneInput.focus();
+        busy = false;
+        render();
+        return;
+      }
+      phoneInput.value = customerPhone;
+      phoneError.hidden = true;
       const items = cart.checkoutItems();
       const signature = JSON.stringify({
         provider,
+        customerPhone,
         paymentMode: settings.paymentMode,
         items,
         shippingCents: settings.shippingCents,
@@ -58,6 +86,7 @@
           attemptId: crypto.randomUUID(),
           checkoutToken: [...bytes].map((b) => b.toString(16).padStart(2, '0')).join(''),
           provider,
+          customerPhone,
           signature,
           items,
           createdAt: Date.now(),
@@ -76,6 +105,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           provider,
+          customerPhone,
           items,
           attemptId: attempt.attemptId,
           checkoutToken: attempt.checkoutToken,

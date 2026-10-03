@@ -90,13 +90,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition:
-    border-color 0.3s,
-    transform 0.3s;
+
 }
 .feature-card:hover {
   border-color: var(--gold);
-  transform: translateY(-4px);
 }
 .feature-card > img {
   width: 100%;

@@ -14,7 +14,7 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: 30px;
 }
 body {
@@ -188,12 +188,7 @@ h1 > span {
   gap: 48px;
   font-size: 14px;
   font-weight: 700;
-  transition:
-    transform 0.2s,
-    background 0.2s;
-}
-.button:hover {
-  transform: translateY(-3px);
+
 }
 .button span {
   font-size: 23px;
@@ -363,10 +358,7 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.3, 1);
-}
-.product-visual:hover img {
-  transform: scale(1.045);
+
 }
 .gloves-visual img {
   object-position: 80% 50%;
@@ -398,7 +390,7 @@ h2 {
   place-items: center;
   border-radius: 50%;
   font-size: 25px;
-  transition: background 0.2s;
+
 }
 .product-visual:hover .product-open {
   background: var(--accent);
@@ -964,17 +956,6 @@ dialog::backdrop {
   }
   .training-dialog {
     padding-top: 55px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
   }
 }
 

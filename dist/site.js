@@ -1,4 +1,4 @@
-// Shared mobile navigation, cart count, notifications and scroll-reveal behavior.
+// Shared mobile navigation, cart count, notifications.
 (() => {
   document.documentElement.classList.add('has-site-js');
   const toggle = document.querySelector('.nav-toggle');
@@ -84,22 +84,4 @@
   );
   const year = document.querySelector('#year');
   if (year) year.textContent = new Date().getFullYear();
-  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove('is-pending');
-            observer.unobserve(entry.target);
-          }
-        }),
-      { threshold: 0.06 },
-    );
-    document.querySelectorAll('.reveal').forEach((element) => {
-      if (element.getBoundingClientRect().top > innerHeight) {
-        element.classList.add('is-pending');
-        observer.observe(element);
-      }
-    });
-  }
 })();

@@ -162,25 +162,4 @@
   }
   const year = document.querySelector('#year');
   if (year) year.textContent = new Date().getFullYear();
-  if (
-    'IntersectionObserver' in window &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ) {
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove('is-pending');
-            observer.unobserve(entry.target);
-          }
-        }),
-      { threshold: 0.08 },
-    );
-    document.querySelectorAll('.oc-reveal').forEach((element) => {
-      if (element.getBoundingClientRect().top > window.innerHeight) {
-        element.classList.add('is-pending');
-        observer.observe(element);
-      }
-    });
-  }
 })();

@@ -193,9 +193,7 @@
   color: var(--accent-soft);
   font-size: 13px;
   font-weight: 700;
-  transition:
-    background 0.2s,
-    color 0.2s;
+
 }
 .card-add-button:hover:not(:disabled) {
   background: var(--accent);
@@ -255,15 +253,6 @@
 }
 .shop-page .equipment {
   padding-top: 60px;
-}
-.reveal {
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-.reveal.is-pending {
-  opacity: 0;
-  transform: translateY(18px);
 }
 @media (max-width: 960px) {
   .site-header {
@@ -369,22 +358,4 @@
   .shop-heading {
     font-size: 55px;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal.is-pending {
-    opacity: 1;
-    transform: none;
-  }
-  .reveal {
-    transition: none;
-  }
-}
-
-/* GSAP enhancement layer: motion is progressive and never required for navigation/checkout. */
-.product { will-change: transform; }
-.product-visual { overflow: hidden; }
-.product-visual img { will-change: transform; transform-origin: center center; }
-.button, .card-add-button, .filter { will-change: transform; }
-@media (prefers-reduced-motion: reduce) {
-  .product, .product-visual img, .button, .card-add-button, .filter { will-change: auto; }
 }

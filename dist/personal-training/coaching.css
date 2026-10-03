@@ -93,7 +93,7 @@
   object-fit: cover;
   object-position: 66% center;
   filter: grayscale(1);
-  animation: oc-settle 1.4s ease-out both;
+
 }
 .oc-hero-shade {
   position: absolute;
@@ -146,13 +146,10 @@
   background: var(--oc-panel);
   border-top: 2px solid var(--gold);
   padding: 25px 23px 28px;
-  transition:
-    background 0.25s,
-    transform 0.25s;
+
 }
 .oc-benefit:hover {
   background: #242219;
-  transform: translateY(-4px);
 }
 .oc-card-number {
   font-family: var(--display);
@@ -303,12 +300,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  transition:
-    transform 0.25s,
-    border-color 0.25s;
+
 }
 .oc-package:hover {
-  transform: translateY(-4px);
   border-color: var(--gold);
 }
 .oc-package-top {
@@ -540,7 +534,7 @@
   font-size: 25px;
   color: var(--accent-text);
   font-weight: 400;
-  transition: transform 0.2s;
+
 }
 .oc-faq-list details[open] summary > span {
   transform: rotate(45deg);
@@ -631,23 +625,6 @@
 }
 .oc-dialog-copy .button {
   font-size: 13px;
-}
-.oc-reveal {
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
-.oc-reveal.is-pending {
-  opacity: 0;
-  transform: translateY(22px);
-}
-@keyframes oc-settle {
-  from {
-    transform: scale(1.035);
-  }
-  to {
-    transform: scale(1);
-  }
 }
 @media (min-width: 1600px) {
   .oc-hero-copy {
@@ -1022,20 +999,6 @@
     font-size: 13px !important;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .oc-reveal.is-pending {
-    opacity: 1;
-    transform: none;
-  }
-  .oc-hero-image {
-    animation: none;
-  }
-  .oc-reveal,
-  .oc-benefit,
-  .oc-package {
-    transition: none;
-  }
-}
 
 /* Two training formats within the shared Round One design. */
 .personal-training-page .oc-hero {
@@ -1063,15 +1026,12 @@
   background: linear-gradient(145deg, #282319, #161616 65%);
   border: 1px solid #c9a34a77;
   padding: 34px;
-  transition:
-    transform 0.3s,
-    border-color 0.3s;
+
 }
 .pt-option:nth-child(2) {
   background: linear-gradient(145deg, #25251b, #161616 65%);
 }
 .pt-option:hover {
-  transform: translateY(-4px);
   border-color: var(--accent);
 }
 .pt-option-tag {
